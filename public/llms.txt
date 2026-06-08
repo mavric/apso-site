@@ -1,0 +1,42 @@
+# Apso - Agent-Driven Backend Generation
+
+> Apso turns a schema into a production-ready backend in NestJS, FastAPI, or Go. You own every line.
+
+## What Apso Does
+
+Apso is a backend-as-a-service platform that generates production-ready REST API backends from schema definitions. You define your data model in a .apsorc file, and Apso generates a complete backend with entities, migrations, CRUD endpoints, authentication, multi-tenancy, and AWS deployment in the language of your choice.
+
+## Key Differentiators
+
+- Code ownership: Real NestJS, FastAPI, or Go source code in your repo. No vendor runtime.
+- Multi-language: TypeScript, Python, Go backends from the same schema.
+- BYOA (Bring Your Own Auth): Plug in BetterAuth, Auth0, Clerk, Cognito, or API keys.
+- Deterministic generation: Same schema produces the same backend every time.
+- MCP server: AI agents can drive Apso through Model Context Protocol.
+- Schema-first: One .apsorc file is the source of truth for the entire backend.
+
+## How It Works
+
+1. Define your schema in .apsorc (JSON)
+2. Run the CLI or let an agent drive it through MCP
+3. Deploy to AWS (Lambda, RDS, API Gateway)
+
+## Links
+
+- Website: https://apso.ai
+- App: https://app.apso.cloud
+- Docs: https://docs.apso.ai
+- GitHub: https://github.com/apsoai
+- CLI: npm install -g @apso/cli
+
+## Pricing
+
+- Free: CLI generation free forever, 1 hosted service
+- Pro: ~$25/service/mo (always-on, backups, custom domain, 100 credits)
+- Team: ~$99/mo flat (unlimited members, RBAC, service catalog)
+- Enterprise: Custom (SSO, audit logs, SOC 2, SLA)
+- BYOC: ~$40/service/mo + your cloud costs
+
+## Company
+
+Built by Mavric Technology, LLC.

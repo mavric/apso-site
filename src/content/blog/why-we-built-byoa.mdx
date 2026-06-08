@@ -1,0 +1,61 @@
+---
+title: "Why We Built BYOA (Bring Your Own Auth)"
+description: "A philosophy and technical guide to owning your authentication layer without vendor lock-in. How Apso lets you switch auth providers by changing one line."
+date: "2026-06-05"
+author: "Apso Team"
+---
+
+You launch a side project on a Friday night. Firebase Authentication is perfect. Just add the SDK, flip a few toggles, and you have production-grade auth. User signups work. Password resets work. Social login works.
+
+Fast-forward six months. Your side project became a real product. You have paying customers. And now you realize: your entire user identity layer lives inside Firebase's system. Your session logic depends on their SDK. Your pricing is bound to their auth tier.
+
+You want to switch providers. Maybe you need HIPAA compliance. Maybe their pricing doubled. You face a brutal reality: switching auth means rewriting authentication from scratch.
+
+**You are locked in.**
+
+## What "Bring Your Own Auth" Really Means
+
+Apso does not force an auth provider on you. Instead, it generates authentication guards from your schema, but you choose the provider:
+
+- **BetterAuth** for self-hosted sessions and maximum control
+- **Auth0** for enterprise SSO
+- **Clerk** for modern SaaS auth with polished UI
+- **Cognito** for AWS ecosystem integration
+- **API Keys** for service-to-service communication
+- **Custom DB Sessions** for your own session logic
+
+All providers are supported in the same `.apsorc` configuration block. You switch providers by changing a single line, then regenerating the service.
+
+## The Normalized AuthContext
+
+Every guard produces the same normalized interface.
+
+```typescript
+interface AuthContext {
+  userId?: string;
+  email?: string;
+  workspaceId?: string;
+  organizationId?: string;
+  roles: string[];
+}
+```
+
+Your business logic talks to this interface, not to any provider-specific SDK. Your services, controllers, and resolvers do not care whether you are using Auth0 JWTs or BetterAuth sessions. They only know AuthContext.
+
+## Provider Migration is Trivial
+
+Imagine you are running your API with BetterAuth. Six months in, you decide to switch to Clerk. Here is what changes:
+
+1. Update the auth block in `.apsorc`
+2. Run `apso server scaffold`
+3. Your guards are regenerated for Clerk's JWT format
+
+Your business logic? **Completely unchanged.** Your services still call `req.auth.userId`. Your multi-tenant data scoping still reads `req.auth.organizationId`. None of that changes.
+
+This is impossible with monolithic platforms. With BYOA, it means changing a few lines in `.apsorc`.
+
+## The Bigger Philosophy
+
+BYOA is part of Apso's core principle: you own the code. The generated authentication guards are standard TypeScript backend code. You can inspect them, modify them, and understand them. Apso does not hide provider behavior behind magic or black boxes.
+
+When you choose an auth provider with Apso, you choose based on what fits your needs today, not based on what you will be forced to accept in three years.

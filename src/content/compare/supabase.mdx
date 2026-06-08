@@ -1,0 +1,64 @@
+---
+title: "Apso vs Supabase"
+description: "A practical comparison of Apso and Supabase for teams choosing between managed Postgres APIs and generated backend code."
+competitor: "Supabase"
+date: "2026-06-01"
+---
+
+Supabase is a managed Postgres platform with instant APIs, auth, storage, and realtime features. It works best when the database is the main backend surface and your team is comfortable building around the Supabase platform model.
+
+Apso is built for a different decision. It generates a complete TypeScript, Python, or Golang backend codebase from a schema, then deploys that code to AWS. You own the API layer, auth integration, migrations, and service structure.
+
+## Quick Verdict
+
+Choose Supabase when your backend can stay close to Postgres, realtime matters, and speed to first query matters more than owning the generated application layer.
+
+Choose Apso when you need backend code your team can read, modify, test, and run without a hosted platform.
+
+## Side-by-Side
+
+| Decision area | Apso | Supabase |
+| --- | --- | --- |
+| Primary model | Generates backend code from a schema | Managed Postgres with generated APIs |
+| Code ownership | You own the service code | You own database schema and app code, while the platform owns the API layer |
+| API style | Generated REST API | Generated REST and GraphQL over Postgres |
+| Business logic | Application-layer code in your repo | SQL functions, triggers, edge functions, and client logic |
+| Multi-tenancy | Generated guards and tenant scoping in application code | Usually implemented with Postgres RLS policies |
+| Auth | Bring your own auth provider | Supabase Auth |
+| Runtime dependency | Generated backend runs without Apso | App depends on Supabase services or a self-hosted Supabase stack |
+| Best fit | Owned production services | Fast Postgres-backed apps |
+
+## Where Supabase Fits
+
+- **Realtime and Postgres-first workflows.** Supabase fits apps where the database is the product surface and realtime subscriptions are central to the experience.
+- **Speed to first query.** Teams can create a project, define tables, and call an API quickly.
+- **Bundled hosted services.** Auth, storage, edge functions, and generated APIs live in one hosted system.
+
+## Where Apso Wins
+
+- **Owned API layer.** Apso generates service code in your repository. You can inspect routing, validation, tenant scoping, auth guards, migrations, and deployment config.
+- **Application-layer logic.** Complex business rules live in normal backend code rather than being split across SQL functions, triggers, edge functions, and client calls.
+- **Language fit.** Apso generates TypeScript, Python, and Golang backends, which matters when your backend team does not want a Postgres-only development model.
+- **Operational controls with code ownership.** Apso can expose table editing, SQL, logs, and auth controls without making the hosted dashboard the source of truth.
+- **Portable multi-tenancy.** Tenant scoping is generated in application code, which keeps the pattern portable across databases and deployment targets.
+- **Exit path.** The generated code keeps running if you stop using Apso.
+
+## Migration and Lock-In
+
+With Supabase, your database can move, but your app usually depends on Supabase Auth, generated APIs, RLS policies, edge functions, storage behavior, and client SDK calls. Leaving means rebuilding those pieces.
+
+With Apso, the generated backend is already in your repository. The migration question is less about leaving Apso and more about whether you want to keep the generated patterns or edit them.
+
+## Best Fit by Team
+
+| Team | Better fit | Why |
+| --- | --- | --- |
+| Indie builder shipping an MVP | Supabase | The database, auth, and API are ready fast |
+| SaaS team with custom business rules | Apso | The service layer is code your team owns |
+| Team that needs realtime first | Supabase | Realtime is a core platform capability |
+| Agency handing code to clients | Apso | The client receives a backend codebase, not only platform configuration |
+| Platform team standardizing services | Apso | Schema review and deterministic generation create repeatable service patterns |
+
+## Bottom Line
+
+Supabase is a fit when you want to build inside a managed Postgres platform. Apso is the better fit when the backend itself is an asset your team needs to own, audit, and customize.

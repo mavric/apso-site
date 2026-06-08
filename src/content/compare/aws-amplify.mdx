@@ -1,0 +1,62 @@
+---
+title: "Apso vs AWS Amplify"
+description: "A practical comparison of Apso and AWS Amplify for teams choosing between AWS-native fullstack tooling and generated backend code."
+competitor: "AWS Amplify"
+date: "2026-06-02"
+---
+
+AWS Amplify is AWS-native tooling for building fullstack web and mobile apps. Amplify can define cloud resources for data, authentication, storage, functions, and hosting, then connect app code to those backend services.
+
+Apso also deploys to AWS, but the starting point is different. Apso generates a backend codebase from a schema, then provisions the infrastructure needed to run that service.
+
+## Quick Verdict
+
+Choose AWS Amplify when your team wants AWS-managed app primitives and is comfortable building inside the Amplify model.
+
+Choose Apso when your team wants a generated backend service with clear code ownership and a smaller abstraction surface.
+
+## Side-by-Side
+
+| Decision area | Apso | AWS Amplify |
+| --- | --- | --- |
+| Primary model | Generated backend service | AWS-native fullstack app toolkit |
+| Cloud target | AWS managed by Apso or your account | AWS |
+| Backend output | TypeScript, Python, or Golang service code | AWS resources and application integration code |
+| Auth | Bring your own auth provider | AWS-managed auth patterns |
+| Data | Generated backend over a database | Amplify data resources and AWS service integration |
+| Best fit | Owned service code | AWS-native app teams |
+
+## Where AWS Amplify Fits
+
+- **AWS-native workflows.** Amplify is built for teams that want to stay inside AWS patterns.
+- **Fullstack app coverage.** Data, auth, storage, functions, and hosting can be managed together.
+- **Frontend integration.** Amplify libraries help web and mobile apps connect to backend services.
+- **Cloud resource control.** Teams that already understand AWS can align Amplify with existing cloud practices.
+
+## Where Apso Wins
+
+- **Backend service code.** Apso generates a service your team can read, test, and modify.
+- **Simpler decision boundary.** The schema defines the backend, and the generator handles routes, migrations, validation, auth guards, and deployment config.
+- **Auth flexibility.** Apso supports BetterAuth, Auth0, Clerk, Cognito, API keys, and custom sessions through Bring Your Own Auth.
+- **Agent-ready generation.** AI agents can drive schema changes while Apso keeps the output deterministic.
+- **Hand-off clarity.** The result is a backend codebase, which is easier to hand to a client or another team than a collection of cloud configuration decisions.
+
+## Migration and Lock-In
+
+Amplify keeps you close to AWS, which can be the right tradeoff for AWS-native teams. The cost is that your backend architecture follows the Amplify and AWS service model.
+
+Apso uses AWS as a deployment target, but the generated backend is still a codebase your team can keep and modify.
+
+## Best Fit by Team
+
+| Team | Better fit | Why |
+| --- | --- | --- |
+| AWS-native frontend team | AWS Amplify | The app can use AWS-managed backend services directly |
+| Backend team standardizing services | Apso | The output is a generated service codebase |
+| Agency delivering client-owned code | Apso | The handoff is easier to inspect and maintain |
+| Mobile team using AWS app primitives | AWS Amplify | Amplify covers common app backend needs |
+| Team using AI agents for backend setup | Apso | The schema creates a deterministic generation boundary |
+
+## Bottom Line
+
+AWS Amplify is a strong fit for AWS-native app teams. Apso is the better fit when you want AWS deployment with generated backend code your team owns.

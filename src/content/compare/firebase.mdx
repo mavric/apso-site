@@ -1,0 +1,65 @@
+---
+title: "Apso vs Firebase"
+description: "A practical comparison of Apso and Firebase for teams choosing between a managed app platform and generated backend code."
+competitor: "Firebase"
+date: "2026-06-01"
+---
+
+Firebase is a Google platform for mobile and web apps. It brings together Firestore, Authentication, Cloud Functions, Hosting, Cloud Messaging, analytics, and mobile SDKs.
+
+Apso takes a different path. It generates a complete TypeScript, Python, or Golang backend from a schema, then deploys that backend to AWS. The output is code your team owns.
+
+## Quick Verdict
+
+Choose Firebase when you need mobile SDKs, realtime sync, offline-first behavior, and tight Google Cloud integration.
+
+Choose Apso when you need a SQL-backed service, backend code ownership, language choice, and a clean exit path.
+
+## Side-by-Side
+
+| Decision area | Apso | Firebase |
+| --- | --- | --- |
+| Primary model | Generated backend code | Managed app platform |
+| Database model | PostgreSQL | Firestore document database |
+| API ownership | Generated service code in your repo | App calls Firebase services and Cloud Functions |
+| Business logic | Application-layer backend code | Cloud Functions, security rules, and client logic |
+| Auth | Bring your own auth provider | Firebase Authentication |
+| Realtime and offline | Build as needed | Core platform strength |
+| Mobile support | Standard API consumption | Mature mobile SDKs |
+| Best fit | Owned production backends | Mobile-first and realtime apps |
+
+## Where Firebase Fits
+
+- **Mobile-first development.** Firebase fits teams that already want to build around iOS, Android, Flutter, and web SDKs.
+- **Realtime and offline-first apps.** Firestore is built around realtime updates and offline behavior.
+- **Bundled app services.** Auth, hosting, messaging, analytics, crash reporting, and remote config sit in one platform.
+- **Prototype speed.** Teams can ship a working app without designing a backend service.
+- **Google Cloud fit.** Firebase is a fit for teams already committed to Google infrastructure.
+
+## Where Apso Wins
+
+- **Backend code ownership.** Apso generates TypeScript, Python, or Golang backend code that your team can read, test, and modify.
+- **Relational data.** Apso uses PostgreSQL, which fits joins, transactions, constraints, and relational SaaS data better than document modeling.
+- **Auth portability.** Apso supports Bring Your Own Auth, so you can use BetterAuth, Auth0, Clerk, Cognito, API keys, or custom sessions.
+- **Application-layer guardrails.** Multi-tenancy, validation, and API structure are generated into the backend rather than spread across security rules and platform configuration.
+- **Exit path.** The generated backend does not need an Apso runtime.
+
+## Migration and Lock-In
+
+Firebase can be a great start, but the app usually accumulates Firebase-specific security rules, Firestore data shapes, Cloud Functions, auth assumptions, and SDK calls.
+
+Apso starts with a backend codebase. That means you give up some platform convenience, but you gain a service your team can keep if the toolchain changes.
+
+## Best Fit by Team
+
+| Team | Better fit | Why |
+| --- | --- | --- |
+| Mobile app team | Firebase | Mobile SDKs and offline support are mature |
+| B2B SaaS team | Apso | Relational data, tenant scoping, and owned code matter |
+| Prototype or hackathon | Firebase | The managed platform gets you moving fast |
+| Regulated or audited backend | Apso | Reviewable generated code is easier to inspect |
+| Team that wants Google Cloud services | Firebase | The platform is built around that ecosystem |
+
+## Bottom Line
+
+Firebase fits mobile-first apps and realtime experiences. Apso is the better fit when you are building a backend service you expect to own, audit, and customize over time.

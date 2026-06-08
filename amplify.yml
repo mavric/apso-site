@@ -1,0 +1,21 @@
+version: 1
+applications:
+  - appRoot: .
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+            - npm install lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu --force
+        build:
+          commands:
+            - env >> .env.production
+            - npm run build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - .next/cache/**/*
+          - node_modules/**/*

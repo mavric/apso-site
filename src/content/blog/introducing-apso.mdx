@@ -1,0 +1,80 @@
+---
+title: "Introducing Apso: Agent-Driven Backend Generation"
+description: "AI agents decide what to build. Apso decides how. Deterministic TypeScript, Python, and Golang backend generation from a schema. You own every line."
+date: "2026-06-01"
+author: "Apso Team"
+---
+
+If you have built more than one backend, you know the drill. You create a database schema, scaffold a REST API, add authentication, layer in multi-tenancy, wire up permissions, and deploy to the cloud. The pattern is so repetitive that you could almost automate it.
+
+We did exactly that. And today, we are introducing Apso.
+
+## The Problem with Agent-Authored Backends
+
+AI coding tools have gotten good enough to write backends. But there is a problem: the output varies with the model, the prompt, and the day. Two services built a week apart follow different patterns. When the model upgrades, your guardrails silently change. Auditing means reading thousands of lines the agent chose to write, hoping it made the right security decisions.
+
+The issue is not the agent. The issue is where the guardrails live. When security defaults, structure, auth patterns, and multi-tenancy live in a prompt, they are reconstructed probabilistically on every run. Change the model, change the result.
+
+## The Determinism Boundary
+
+Apso puts the guardrails in the generator, not the model. You define your data model in a single `.apsorc` configuration file. The CLI deterministically generates a complete backend with CRUD endpoints, authentication, multi-tenancy, database migrations, and deployment infrastructure.
+
+The same schema and CLI version produce the same output on any model.
+
+The agent still drives the process. It can generate the schema, validate it, and iterate on it through the built-in MCP server. But the agent's reasoning collapses into a reviewable spec, and the generator produces the guarded output from that spec. The agent decides *what* to build. The CLI decides *how*.
+
+We call this the **determinism boundary**: the line between nondeterministic agent reasoning and deterministic code generation. Everything above the boundary (intent, schema design, iteration) is the agent's domain. Everything below (structure, security, deployment) is locked in the generator.
+
+## What Apso Generates
+
+Define your entities, fields, relationships, and auth rules in `.apsorc`:
+
+```json
+{
+  "entities": [
+    {
+      "name": "Workspace",
+      "fields": [
+        { "name": "name", "type": "text", "length": 255 }
+      ]
+    },
+    {
+      "name": "User",
+      "fields": [
+        { "name": "email", "type": "text", "length": 255, "is_email": true },
+        { "name": "name", "type": "text", "length": 255 }
+      ],
+      "relationships": [
+        { "name": "workspace", "type": "ManyToOne", "entity": "Workspace" }
+      ]
+    }
+  ]
+}
+```
+
+Run `apso server scaffold` and get a complete backend: controller routes, service layer, repository layer, database migrations, error handling, input validation, and deployment config. Apso supports TypeScript, Python, and Golang.
+
+## What Makes This Different
+
+**Deterministic output.** The same schema produces the same output every time. Prompt drift and model dependency do not decide the backend structure. The output is reproducible today, next month, or two years from now on a completely different model.
+
+**You own the code.** The output is real backend code in your repository. It has no Apso imports, vendor SDK, or proprietary runtime. Stop using Apso and the code keeps working. The templates use the Apache-2.0 license.
+
+**Bring Your Own Auth.** BetterAuth, Auth0, Clerk, Cognito, or API keys. Switch providers by changing one line in your schema and regenerating.
+
+**Safe regeneration.** Generated code lives in `src/autogen/`. Your custom business logic lives in `src/extensions/`. Regenerate as many times as you want without losing your work.
+
+**Agent-ready.** The built-in MCP server lets any MCP-capable editor (Claude Code, Cursor, Copilot) discover and drive Apso without leaving the IDE.
+
+## Getting Started
+
+```bash
+npm install -g @apso/cli
+apso server new --name my-api --language typescript
+# Edit .apsorc with your schema
+apso server scaffold -l typescript
+```
+
+Full documentation is available at [docs.apso.ai](https://docs.apso.ai).
+
+The agent decides what to build. Apso decides how. Start building at [app.apso.cloud](https://app.apso.cloud).

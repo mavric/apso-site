@@ -1,0 +1,57 @@
+---
+title: "Apso vs Supabase: A Different Philosophy on Backend Development"
+description: "An honest comparison of Apso and Supabase. Two distinct philosophies for building backends, with clear guidance on when to choose each."
+date: "2026-06-03"
+author: "Apso Team"
+---
+
+When building modern applications, developers face a critical decision: how to handle the backend. Both Apso and Supabase promise to accelerate backend development, but they take fundamentally different approaches.
+
+Supabase offers a managed platform where you use their infrastructure, APIs, and services. Apso generates production-ready backend code that you own, customize, and deploy on your own AWS infrastructure. Supabase is a service you subscribe to. Apso is a code generator that produces a codebase you control.
+
+## Quick Comparison
+
+| Feature | Apso | Supabase |
+|---------|------|----------|
+| **Code Ownership** | Full ownership of generated code | No (PostgREST API layer is opaque) |
+| **Database** | PostgreSQL on your RDS | Managed PostgreSQL |
+| **Authentication** | BYOA (Auth0, Clerk, BetterAuth, Cognito) | Built-in Supabase Auth |
+| **Real-time** | Not native (extensible) | First-class real-time subscriptions |
+| **Languages** | TypeScript, Python, Golang backends | N/A (SDK-based consumption) |
+| **Deployment** | Your AWS account | Managed Supabase cloud or self-host |
+
+## Where Supabase Excels
+
+Supabase has real strengths that make it the right choice for many projects.
+
+**Real-time subscriptions** work out of the box via PostgreSQL logical replication. If you are building chat, collaborative editing, or live dashboards, Supabase delivers this without additional configuration.
+
+**The dashboard** is polished and comprehensive: table editor, SQL runner, log explorer, and auth management in one place. Non-technical team members can manage data without touching code.
+
+**The free tier** is generous (500 MB database, 50K MAUs) and viable for hobby projects and MVPs.
+
+## Where Apso Excels
+
+**Code ownership.** When you run `apso server scaffold`, you get a complete backend codebase in your repository. This is real TypeScript, Python, or Golang backend code. You can read every line, debug with standard tools, and trace request flows from route handler to database query.
+
+**Multi-language support.** If your team writes Python or Golang, you get a backend in that language. Supabase is JavaScript/TypeScript-centric.
+
+**Authentication flexibility.** Apso supports BetterAuth, Auth0, Clerk, Cognito, and API keys. The generated auth guard produces a normalized AuthContext, so switching providers means changing one line in your schema and regenerating.
+
+**Application-layer multi-tenancy.** Apso implements data scoping at the application layer, making it portable across databases. Supabase relies on PostgreSQL RLS, which is powerful but Postgres-specific and harder to debug.
+
+**Deployment flexibility.** Apso deploys to your AWS account using standard Lambda, RDS, and API Gateway, so there is no proprietary runtime to manage.
+
+## When to Choose Which
+
+**Choose Supabase if** you want a managed platform with minimal ops overhead, real-time features are core requirements, you are comfortable with PostgreSQL-centric architecture, or you are building a prototype where speed matters more than control.
+
+**Choose Apso if** you want to own and version-control your backend codebase, need to deploy on your own AWS infrastructure, your team uses Python or Golang, need to integrate with an existing auth system, or you are building something you expect to customize deeply over time.
+
+## The Philosophical Difference
+
+Supabase asks: "What if we gave developers a fully managed PostgreSQL database with instant APIs, real-time, auth, and storage?"
+
+Apso asks: "What if we generated the entire backend codebase so developers own everything?"
+
+Neither approach is inherently superior. The right choice depends on what you value. If you want to **use** a backend platform and focus entirely on frontend and business logic, Supabase is excellent. If you want to **own** a backend codebase that you can read, modify, and control, Apso delivers.

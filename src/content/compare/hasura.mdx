@@ -1,0 +1,64 @@
+---
+title: "Apso vs Hasura"
+description: "A practical comparison of Apso and Hasura for teams choosing between generated GraphQL APIs and generated backend services."
+competitor: "Hasura"
+date: "2026-06-02"
+---
+
+Hasura is a powerful way to create GraphQL APIs over databases and services. It is especially useful when teams want fast GraphQL access, role-based permissions, event triggers, and a unified API layer.
+
+Apso focuses on generated backend services. You define a schema, and Apso generates TypeScript, Python, or Golang backend code with REST endpoints, auth integration, migrations, and deployment config.
+
+## Quick Verdict
+
+Choose Hasura when GraphQL is the central API contract and your team wants an API layer over existing data.
+
+Choose Apso when you want a generated backend service that your team owns as code.
+
+## Side-by-Side
+
+| Decision area | Apso | Hasura |
+| --- | --- | --- |
+| Primary model | Generated backend service | Generated GraphQL API layer |
+| API style | REST by default | GraphQL by default |
+| Code ownership | Generated backend code in your repo | Metadata, permissions, actions, and event configuration |
+| Database fit | Schema-generated service with migrations | Strong fit over Postgres and connected data sources |
+| Business logic | Application-layer backend code | Actions, event triggers, remote schemas, and external services |
+| Auth and permissions | Generated guards and tenant scoping | Role and rule-based authorization |
+| Best fit | Owned production services | GraphQL over data sources |
+
+## Where Hasura Fits
+
+- **GraphQL speed.** Hasura can expose GraphQL APIs quickly over supported databases.
+- **Existing database projects.** Teams with an established Postgres schema can add an API layer without rewriting the backend.
+- **Permission model.** Role and rule-based permissions are a core part of the product.
+- **Event-driven extensions.** Event triggers, actions, and remote schemas help connect database events to custom services.
+- **Unified API layer.** Hasura is useful when the goal is to compose multiple data sources behind GraphQL.
+
+## Where Apso Wins
+
+- **Generated backend code.** Apso creates a backend service your team can inspect, test, and deploy.
+- **REST-first service output.** Teams that want normal REST APIs and generated controllers do not need to adopt GraphQL as the main contract.
+- **Business logic in code.** Custom rules can live in the application layer instead of being split across metadata, actions, triggers, and external services.
+- **Agent boundary.** Agents can change the schema while the generator keeps the backend structure deterministic.
+- **Deployment ownership.** The output is designed to run as a service you own.
+
+## Migration and Lock-In
+
+Hasura gives you a GraphQL API layer, but the project accumulates Hasura metadata, permission rules, actions, event triggers, and GraphQL-specific client assumptions.
+
+Apso gives you generated backend code. The service can keep running if Apso is removed from the workflow.
+
+## Best Fit by Team
+
+| Team | Better fit | Why |
+| --- | --- | --- |
+| GraphQL-first product team | Hasura | GraphQL is the product center |
+| Team with an existing Postgres database | Hasura | It can add an API layer quickly |
+| Team standardizing REST services | Apso | The generated backend follows repeatable service patterns |
+| Team with custom business logic | Apso | Logic lives in normal backend code |
+| Team that wants owned generated output | Apso | The backend is a codebase, not only API metadata |
+
+## Bottom Line
+
+Hasura fits teams that want generated GraphQL over existing data. Apso is the better fit when you want to generate and own the backend service itself.
