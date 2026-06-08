@@ -7,7 +7,7 @@ date: "2026-06-01"
 
 Firebase is a Google platform for mobile and web apps. It brings together Firestore, Authentication, Cloud Functions, Hosting, Cloud Messaging, analytics, and mobile SDKs.
 
-Apso takes a different path. It generates a complete TypeScript, Python, or Golang backend from a schema, then deploys that backend to AWS. The output is code your team owns.
+Apso takes a different path. It uses an open-source generator to create a complete TypeScript, Golang, or Python backend from a schema, then deploys that backend to AWS. The output is code your team owns.
 
 ## Quick Verdict
 
@@ -22,6 +22,7 @@ Choose Apso when you need a SQL-backed service, backend code ownership, language
 | Primary model | Generated backend code | Managed app platform |
 | Database model | PostgreSQL | Firestore document database |
 | API ownership | Generated service code in your repo | App calls Firebase services and Cloud Functions |
+| Open-source posture | Open-source generator, Apache-2.0 templates, and open-source generated stacks | Proprietary Google platform services |
 | Business logic | Application-layer backend code | Cloud Functions, security rules, and client logic |
 | Auth | Bring your own auth provider | Firebase Authentication |
 | Realtime and offline | Build as needed | Core platform strength |
@@ -38,7 +39,8 @@ Choose Apso when you need a SQL-backed service, backend code ownership, language
 
 ## Where Apso Wins
 
-- **Backend code ownership.** Apso generates TypeScript, Python, or Golang backend code that your team can read, test, and modify.
+- **Backend code ownership.** Apso generates TypeScript, Golang, or Python backend code that your team can read, test, and modify.
+- **Open-source generation path.** The generator, templates, and generated TypeScript, Golang, and Python stacks are open source, so ownership is practical, not just contractual.
 - **Relational data.** Apso uses PostgreSQL, which fits joins, transactions, constraints, and relational SaaS data better than document modeling.
 - **Auth portability.** Apso supports Bring Your Own Auth, so you can use BetterAuth, Auth0, Clerk, Cognito, API keys, or custom sessions.
 - **Application-layer guardrails.** Multi-tenancy, validation, and API structure are generated into the backend rather than spread across security rules and platform configuration.

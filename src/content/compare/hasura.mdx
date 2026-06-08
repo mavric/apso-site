@@ -7,7 +7,7 @@ date: "2026-06-02"
 
 Hasura is a powerful way to create GraphQL APIs over databases and services. It is especially useful when teams want fast GraphQL access, role-based permissions, event triggers, and a unified API layer.
 
-Apso focuses on generated backend services. You define a schema, and Apso generates TypeScript, Python, or Golang backend code with REST endpoints, auth integration, migrations, and deployment config.
+Apso focuses on generated backend services. You define a schema, and Apso uses an open-source generator to create TypeScript, Golang, or Python backend code with REST endpoints, auth integration, migrations, and deployment config.
 
 ## Quick Verdict
 
@@ -22,6 +22,7 @@ Choose Apso when you want a generated backend service that your team owns as cod
 | Primary model | Generated backend service | Generated GraphQL API layer |
 | API style | REST by default | GraphQL by default |
 | Code ownership | Generated backend code in your repo | Metadata, permissions, actions, and event configuration |
+| Open-source posture | Open-source generator, Apache-2.0 templates, and open-source generated stacks | GraphQL platform with metadata and runtime dependency |
 | Database fit | Schema-generated service with migrations | Strong fit over Postgres and connected data sources |
 | Business logic | Application-layer backend code | Actions, event triggers, remote schemas, and external services |
 | Auth and permissions | Generated guards and tenant scoping | Role and rule-based authorization |
@@ -38,6 +39,7 @@ Choose Apso when you want a generated backend service that your team owns as cod
 ## Where Apso Wins
 
 - **Generated backend code.** Apso creates a backend service your team can inspect, test, and deploy.
+- **Open-source generation path.** The generator, templates, and generated TypeScript, Golang, and Python stacks are open source, so ownership is practical, not just contractual.
 - **REST-first service output.** Teams that want normal REST APIs and generated controllers do not need to adopt GraphQL as the main contract.
 - **Business logic in code.** Custom rules can live in the application layer instead of being split across metadata, actions, triggers, and external services.
 - **Agent boundary.** Agents can change the schema while the generator keeps the backend structure deterministic.

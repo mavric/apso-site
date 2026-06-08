@@ -67,7 +67,7 @@ const features = [
   {
     title: "Your Language, Your Backend",
     description:
-      "Pick TypeScript, Python, or Golang. Get production-grade code in the language your team already knows, without a proprietary runtime or vendor SDK in the output.",
+      "Pick TypeScript, Golang, or Python. Get production-grade code in open-source backend stacks your team already knows, without a proprietary runtime or vendor SDK in the output.",
     badge: "Multi-Language",
     icon: "language",
   },
@@ -81,7 +81,7 @@ const features = [
   {
     title: "Own Every Line You Ship",
     description:
-      "You get real source code in your repo. The generated service has no Apso imports or vendor SDK wrapping your logic. It compiles, runs, and deploys with or without Apso.",
+      "You get real source code in your repo. The generator and templates are open source, and the generated TypeScript, Golang, and Python stacks are open source. The service compiles, runs, and deploys with or without Apso.",
     badge: "No Lock-in",
     icon: "ownership",
   },

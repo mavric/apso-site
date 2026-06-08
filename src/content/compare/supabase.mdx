@@ -7,7 +7,7 @@ date: "2026-06-01"
 
 Supabase is a managed Postgres platform with instant APIs, auth, storage, and realtime features. It works best when the database is the main backend surface and your team is comfortable building around the Supabase platform model.
 
-Apso is built for a different decision. It generates a complete TypeScript, Python, or Golang backend codebase from a schema, then deploys that code to AWS. You own the API layer, auth integration, migrations, and service structure.
+Apso is built for a different decision. It uses an open-source generator to create a complete TypeScript, Golang, or Python backend codebase from a schema, then deploys that code to AWS. You own the API layer, auth integration, migrations, and service structure.
 
 ## Quick Verdict
 
@@ -21,6 +21,7 @@ Choose Apso when you need backend code your team can read, modify, test, and run
 | --- | --- | --- |
 | Primary model | Generates backend code from a schema | Managed Postgres with generated APIs |
 | Code ownership | You own the service code | You own database schema and app code, while the platform owns the API layer |
+| Open-source posture | Open-source generator, Apache-2.0 templates, and open-source generated stacks | Open-source platform components plus managed hosted services |
 | API style | Generated REST API | Generated REST and GraphQL over Postgres |
 | Business logic | Application-layer code in your repo | SQL functions, triggers, edge functions, and client logic |
 | Multi-tenancy | Generated guards and tenant scoping in application code | Usually implemented with Postgres RLS policies |
@@ -37,8 +38,9 @@ Choose Apso when you need backend code your team can read, modify, test, and run
 ## Where Apso Wins
 
 - **Owned API layer.** Apso generates service code in your repository. You can inspect routing, validation, tenant scoping, auth guards, migrations, and deployment config.
+- **Open-source generation path.** The generator, templates, and generated TypeScript, Golang, and Python stacks are open source, so ownership is practical, not just contractual.
 - **Application-layer logic.** Complex business rules live in normal backend code rather than being split across SQL functions, triggers, edge functions, and client calls.
-- **Language fit.** Apso generates TypeScript, Python, and Golang backends, which matters when your backend team does not want a Postgres-only development model.
+- **Language fit.** Apso generates TypeScript, Golang, and Python backends, which matters when your backend team does not want a Postgres-only development model.
 - **Operational controls with code ownership.** Apso can expose table editing, SQL, logs, and auth controls without making the hosted dashboard the source of truth.
 - **Portable multi-tenancy.** Tenant scoping is generated in application code, which keeps the pattern portable across databases and deployment targets.
 - **Exit path.** The generated code keeps running if you stop using Apso.

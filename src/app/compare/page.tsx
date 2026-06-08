@@ -12,7 +12,7 @@ import type { CompareFrontmatter } from "@/types/content";
 export const metadata: Metadata = {
   title: "Compare Apso to Alternatives",
   description:
-    "See how Apso compares to Supabase, Firebase, Appwrite, Hasura, AWS Amplify, Xano, and other backend platforms.",
+    "See how Apso compares to Supabase, Firebase, Appwrite, Hasura, Xano, and other backend platforms.",
 };
 
 export default function CompareIndex() {

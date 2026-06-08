@@ -28,7 +28,7 @@ export function softwareApplicationSchema() {
       priceCurrency: "USD",
     },
     description:
-      "Agent-driven backend generation platform. Define a schema and get a production-ready TypeScript, Python, or Golang backend.",
+      "Open-source backend generation platform. Define a schema and get a production-ready TypeScript, Golang, or Python backend.",
   };
 }
 

@@ -17,7 +17,7 @@ Supabase offers a managed platform where you use their infrastructure, APIs, and
 | **Database** | PostgreSQL on your RDS | Managed PostgreSQL |
 | **Authentication** | BYOA (Auth0, Clerk, BetterAuth, Cognito) | Built-in Supabase Auth |
 | **Real-time** | Not native (extensible) | First-class real-time subscriptions |
-| **Languages** | TypeScript, Python, Golang backends | N/A (SDK-based consumption) |
+| **Languages** | TypeScript, Golang, and Python backends | N/A (SDK-based consumption) |
 | **Deployment** | Your AWS account | Managed Supabase cloud or self-host |
 
 ## Where Supabase Excels
@@ -26,13 +26,15 @@ Supabase has real strengths that make it the right choice for many projects.
 
 **Real-time subscriptions** work out of the box via PostgreSQL logical replication. If you are building chat, collaborative editing, or live dashboards, Supabase delivers this without additional configuration.
 
-**The dashboard** is polished and comprehensive: table editor, SQL runner, log explorer, and auth management in one place. Non-technical team members can manage data without touching code.
+**The dashboard** covers common database and auth operations. It gives teams a table editor, SQL runner, log explorer, and auth management, but the hosted platform remains the source of truth for those workflows.
 
 **The free tier** is generous (500 MB database, 50K MAUs) and viable for hobby projects and MVPs.
 
 ## Where Apso Excels
 
-**Code ownership.** When you run `apso server scaffold`, you get a complete backend codebase in your repository. This is real TypeScript, Python, or Golang backend code. You can read every line, debug with standard tools, and trace request flows from route handler to database query.
+**Code ownership.** When you run `apso server scaffold`, you get a complete backend codebase in your repository. This is real TypeScript, Golang, or Python backend code. You can read every line, debug with standard tools, and trace request flows from route handler to database query.
+
+**Open-source generation path.** The generator, templates, and generated TypeScript, Golang, and Python stacks are open source. That makes code ownership practical, because the toolchain and the output are inspectable.
 
 **Multi-language support.** If your team writes Python or Golang, you get a backend in that language. Supabase is JavaScript/TypeScript-centric.
 

@@ -41,7 +41,7 @@ const steps = [
     description:
       "Run the CLI or let your agent call it through the MCP server. The deterministic generator produces a complete backend with API endpoints, database migrations, authentication, and validation in the language your team knows.",
     features: [
-      "TypeScript, Python, or Golang backend output from the same schema",
+      "TypeScript, Golang, or Python backend output from the same schema",
       "Generated code lives in autogen/, your logic lives in extensions/",
       "Regenerate at any time without losing custom work",
       "Output is identical regardless of which model drove it",

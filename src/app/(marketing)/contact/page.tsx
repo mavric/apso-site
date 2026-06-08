@@ -122,7 +122,7 @@ export default function ContactPage() {
                   <svg className="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
-                  TypeScript, Python, or Golang backend output
+                  TypeScript, Golang, or Python backend output
                 </li>
                 <li className="flex items-start gap-3">
                   <svg className="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

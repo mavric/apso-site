@@ -9,7 +9,7 @@ import { APP_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Customers",
   description:
-    "See how teams use Apso to generate and deploy TypeScript, Python, and Golang backends.",
+    "See how teams use Apso to generate and deploy TypeScript, Golang, and Python backends.",
 };
 
 const useCases = [

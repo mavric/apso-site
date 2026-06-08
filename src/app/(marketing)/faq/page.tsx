@@ -16,7 +16,7 @@ const generalQuestions = [
   {
     question: "What is Apso?",
     answer:
-      "Apso is a backend generation platform. You define your data model in a .apsorc schema file, and Apso generates a complete production backend with REST API endpoints, authentication, multi-tenancy, database migrations, and AWS deployment infrastructure. The output is real TypeScript, Python, or Golang backend code in your repository. You own every line.",
+      "Apso is a backend generation platform. You define your data model in a .apsorc schema file, and Apso generates a complete production backend with REST API endpoints, authentication, multi-tenancy, database migrations, and AWS deployment infrastructure. The output is real TypeScript, Golang, or Python backend code in your repository. You own every line.",
   },
   {
     question: "How is Apso different from Firebase or Supabase?",
@@ -31,12 +31,12 @@ const generalQuestions = [
   {
     question: "What programming languages does Apso support?",
     answer:
-      "TypeScript, Python, and Golang. The generated code follows each language's conventions and includes full type definitions, so your team works with familiar tools.",
+      "TypeScript, Golang, and Python. The generated code follows each language's conventions and includes full type definitions, so your team works with familiar tools.",
   },
   {
     question: "Do I own the code?",
     answer:
-      "Yes. The generated code is standard backend code with no Apso imports, no vendor SDK, and no proprietary runtime. It compiles, runs, and deploys with or without Apso. The templates are Apache-2.0 licensed.",
+      "Yes. The generated code is standard backend code with no Apso imports, no vendor SDK, and no proprietary runtime. The generator and templates are open source, and the generated TypeScript, Golang, and Python stacks are open source. The service compiles, runs, and deploys with or without Apso.",
   },
 ];
 
@@ -82,7 +82,7 @@ const pricingQuestions = [
   {
     question: "Is there vendor lock-in?",
     answer:
-      "No. The generated code has no Apso runtime dependency. It is standard TypeScript, Python, or Golang backend code that compiles and runs without Apso. Ejection from managed hosting is free and clean. You pay for the automation, not for access to your own code.",
+      "No. The generated code has no Apso runtime dependency. It is standard TypeScript, Golang, or Python backend code that compiles and runs without Apso. Ejection from managed hosting is free and clean. You pay for the automation, not for access to your own code.",
   },
   {
     question: "Can I deploy to my own cloud?",

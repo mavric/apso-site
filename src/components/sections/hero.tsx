@@ -6,8 +6,8 @@ import { APP_URL, DOCS_URL } from "@/lib/constants";
 const HERO_FEATURES = [
   "Ship a production API in minutes, not weeks",
   "Same schema, same output, every run, on any model",
-  "TypeScript, Python, and Golang backends",
-  "Own every line with no vendor lock-in",
+  "TypeScript, Golang, and Python backends",
+  "Use an open-source generator and open-source backend stacks",
 ];
 
 function CheckIcon() {
@@ -35,8 +35,8 @@ export function Hero() {
             </h1>
             <p className="text-lead text-fg-3 mb-8">
               Turn a schema into a production-ready backend with REST API, auth, migrations,
-              and AWS deployment for TypeScript, Python, and Golang backends. Deterministic output every time,
-              on any model. You own every line.
+              and AWS deployment for TypeScript, Golang, and Python backends. Deterministic output every time,
+              on any model. The generator is open source, and you own every line.
             </p>
 
             <ul className="space-y-3 mb-8">
@@ -68,7 +68,7 @@ export function Hero() {
                 className="h-9 w-auto"
               />
               <p className="text-sm text-fg-4">
-                Open-source CLI. Apache-2.0 templates. Free tier forever.
+                The generator is open source, templates are Apache-2.0 licensed, and the free tier stays free.
               </p>
             </div>
           </div>

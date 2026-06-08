@@ -1,6 +1,6 @@
 export const SITE_NAME = "Apso";
 export const SITE_DESCRIPTION =
-  "Agent-driven backends, deterministically generated. Define a schema, get a production-ready TypeScript, Python, or Golang backend. You own every line.";
+  "Open-source generation for agent-driven backends. Define a schema, get a production-ready TypeScript, Golang, or Python backend, and own every line.";
 export const SITE_URL = "https://apso.ai";
 export const APP_URL = "https://app.apso.cloud";
 export const DOCS_URL = "https://docs.apso.ai";
@@ -16,21 +16,20 @@ export const NAV_LINKS = [
 ] as const;
 
 export const FOOTER_LINKS = {
-	  Product: [
-	    { label: "Pricing", href: "/pricing" },
-	    { label: "Documentation", href: DOCS_URL, external: true },
-	    { label: "Changelog", href: "/blog" },
-	    { label: "Compare", href: "/compare" },
-	  ],
-	  Compare: [
-	    { label: "Supabase", href: "/compare/supabase" },
-	    { label: "Firebase", href: "/compare/firebase" },
-	    { label: "Appwrite", href: "/compare/appwrite" },
-	    { label: "Hasura", href: "/compare/hasura" },
-	    { label: "AWS Amplify", href: "/compare/aws-amplify" },
-	    { label: "Xano", href: "/compare/xano" },
-	  ],
-	  Resources: [
+  Product: [
+    { label: "Pricing", href: "/pricing" },
+    { label: "Documentation", href: DOCS_URL, external: true },
+    { label: "Changelog", href: "/blog" },
+    { label: "Compare", href: "/compare" },
+  ],
+  Compare: [
+    { label: "Supabase", href: "/compare/supabase" },
+    { label: "Firebase", href: "/compare/firebase" },
+    { label: "Appwrite", href: "/compare/appwrite" },
+    { label: "Hasura", href: "/compare/hasura" },
+    { label: "Xano", href: "/compare/xano" },
+  ],
+  Resources: [
     { label: "Blog", href: "/blog" },
     { label: "Use Cases", href: "/use-cases" },
     { label: "FAQ", href: "/faq" },

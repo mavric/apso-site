@@ -28,8 +28,8 @@ export function CtaBand() {
           Stop rebuilding backends from scratch
         </h2>
         <p className="text-lead text-fg-3 mb-4">
-          Define a schema. Generate a TypeScript, Python, or Golang backend. Deploy to AWS.
-          Own every line and start building for free with the open-source CLI.
+          Define a schema. Generate an open-source TypeScript, Golang, or Python backend.
+          Deploy to AWS. Own every line and start building for free with the open-source CLI.
         </p>
         <p className="text-sm text-fg-4 mb-8">
           Start without a credit card, keep the code, and use Apache-2.0 licensed templates.

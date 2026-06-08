@@ -1,6 +1,6 @@
 ---
 title: "Introducing Apso: Agent-Driven Backend Generation"
-description: "AI agents decide what to build. Apso decides how. Deterministic TypeScript, Python, and Golang backend generation from a schema. You own every line."
+description: "AI agents decide what to build. Apso decides how. Deterministic TypeScript, Golang, and Python backend generation from a schema. You own every line."
 date: "2026-06-01"
 author: "Apso Team"
 ---
@@ -52,13 +52,13 @@ Define your entities, fields, relationships, and auth rules in `.apsorc`:
 }
 ```
 
-Run `apso server scaffold` and get a complete backend: controller routes, service layer, repository layer, database migrations, error handling, input validation, and deployment config. Apso supports TypeScript, Python, and Golang.
+Run `apso server scaffold` and get a complete backend: controller routes, service layer, repository layer, database migrations, error handling, input validation, and deployment config. Apso supports TypeScript, Golang, and Python.
 
 ## What Makes This Different
 
 **Deterministic output.** The same schema produces the same output every time. Prompt drift and model dependency do not decide the backend structure. The output is reproducible today, next month, or two years from now on a completely different model.
 
-**You own the code.** The output is real backend code in your repository. It has no Apso imports, vendor SDK, or proprietary runtime. Stop using Apso and the code keeps working. The templates use the Apache-2.0 license.
+**You own the code.** The output is real backend code in your repository. It has no Apso imports, vendor SDK, or proprietary runtime. The generator and templates are open source, and the generated TypeScript, Golang, and Python stacks are open source. Stop using Apso and the code keeps working.
 
 **Bring Your Own Auth.** BetterAuth, Auth0, Clerk, Cognito, or API keys. Switch providers by changing one line in your schema and regenerating.
 

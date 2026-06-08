@@ -33,7 +33,7 @@ export default function CompanyPage() {
                 <p>
                   We built Apso to codify those patterns into a deterministic generator. Define
                   your schema once in a single .apsorc file and get a production-ready backend in
-                  TypeScript, Python, or Golang. The output is real backend code in your repository,
+                  TypeScript, Golang, or Python. The output is real backend code in your repository,
                   with no vendor runtime or proprietary SDK. Stop using Apso and the code keeps
                   running.
                 </p>

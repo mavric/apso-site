@@ -14,7 +14,7 @@ const managedTiers = [
     name: "Free",
     price: "$0",
     period: "",
-    description: "Generate backends locally with the open-source CLI. Host one service to test deployment.",
+    description: "Generate backends locally with the open-source generator. Host one service to test deployment.",
     credits: "~50 onboarding credits, then ~25 / mo",
     features: [
       "CLI generation free forever",
@@ -106,7 +106,7 @@ const faqItems = [
   {
     question: "Do I own the code?",
     answer:
-      "Yes. The output is real TypeScript, Python, or Golang backend code in your repo. The generated code does not depend on an Apso package or runtime. You can run it without us.",
+      "Yes. The output is real TypeScript, Golang, or Python backend code in your repo. The generator and templates are open source, and the generated stacks are open source. The generated code does not depend on an Apso package or runtime. You can run it without us.",
   },
   {
     question: "Is generation free?",
@@ -129,7 +129,8 @@ export default function PricingPage() {
           </h1>
           <p className="text-lead text-fg-3 mb-8">
             CLI generation is free forever on every plan. You pay for hosting and deployment
-            automation. Every plan includes full code ownership. Eject anytime.
+            automation. The generator is open source, and every plan includes full code ownership.
+            Eject anytime.
           </p>
 
           {/* Toggle */}
