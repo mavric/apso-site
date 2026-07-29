@@ -28,7 +28,7 @@ const managedTiers = [
   },
   {
     name: "Pro",
-    price: "~$25",
+    price: "$25",
     period: "/ service / mo",
     description: "Ship production backends with always-on compute, backups, and custom domains.",
     credits: "~100 credits / service / mo",
@@ -46,7 +46,7 @@ const managedTiers = [
   },
   {
     name: "Team",
-    price: "~$99",
+    price: "$99",
     period: "/ mo flat",
     description: "One flat fee for your whole team. No per-seat billing, no headcount surprises.",
     credits: "Credits included with each paid service",
@@ -301,6 +301,7 @@ export default function PricingPage() {
           <p className="text-fg-3">
             Supabase and Firebase charge you to use their platform. Apso generates code you
             own. Stop paying and the code keeps running without a migration, rewrite, or exit fee.
+            Export gives you your application code. The infrastructure automation is the paid part.
           </p>
         </Container>
       </Section>
