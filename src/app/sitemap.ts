@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/pricing",
+    "/templates",
     "/company",
     "/customers",
     "/contact",
