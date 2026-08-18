@@ -1,8 +1,10 @@
+import { BookOpen, Code2, GitBranch } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/marketing/page-hero";
+import { PageCta } from "@/components/marketing/page-cta";
+import { HeroLedger } from "@/components/marketing/hero-ledger";
 import { Breadcrumbs } from "./breadcrumbs";
-import { APP_URL, DOCS_URL } from "@/lib/constants";
 
 interface MdxLayoutProps {
   children: React.ReactNode;
@@ -13,55 +15,61 @@ interface MdxLayoutProps {
   breadcrumbs: { label: string; href?: string }[];
 }
 
-export function MdxLayout({
-  children,
-  title,
-  description,
-  date,
-  author,
-  breadcrumbs,
-}: MdxLayoutProps) {
+export function MdxLayout({ children, title, description, date, author, breadcrumbs }: MdxLayoutProps) {
+  const section = breadcrumbs[0]?.label ?? "Article";
+  const meta = [date ? formatDate(date) : null, author ?? null, `${section} guide`].filter(
+    (item): item is string => Boolean(item)
+  );
+
   return (
     <>
-      <Section className="pt-8 md:pt-12">
-        <Container className="max-w-[860px]">
-          <Breadcrumbs items={breadcrumbs} />
-          <header className="mb-10 mt-6">
-            <h1 className="text-h1 text-fg-1 mb-4">{title}</h1>
-            {description && (
-              <p className="text-lead text-fg-3 mb-4">{description}</p>
-            )}
-            {(date || author) && (
-              <div className="flex items-center gap-3 text-sm text-fg-4">
-                {date && <time dateTime={date}>{formatDate(date)}</time>}
-                {date && author && <span>|</span>}
-                {author && <span>{author}</span>}
+      <PageHero
+        eyebrow={section}
+        title={title}
+        description={description ?? "A practical guide from the Apso team."}
+        top={<Breadcrumbs items={breadcrumbs} dark />}
+        meta={meta}
+        visual={
+          <HeroLedger
+            label="Reading path"
+            rows={[
+              { label: "Understand the model", value: "Start with the product and architecture context.", icon: BookOpen },
+              { label: "Evaluate the boundary", value: "See what Apso generates and what your team owns.", icon: GitBranch },
+              { label: "Apply it", value: "Use the schema, code, and workflow examples in your project.", icon: Code2 },
+            ]}
+            footer="generated code stays in your repository"
+          />
+        }
+      />
+
+      <Section>
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[190px_minmax(0,760px)] lg:justify-center lg:gap-14">
+            <aside className="hidden lg:block">
+              <div className="sticky top-28 border-t border-line-1 pt-5">
+                <p className="font-mono text-[10px] uppercase text-brand">Apso principle</p>
+                <p className="mt-3 font-display text-[18px] font-semibold leading-6 text-fg-1">
+                  Consistent output. Portable code.
+                </p>
+                <p className="mt-3 text-[13px] leading-5 text-fg-4">
+                  Your agent defines the intent. Apso produces the repeatable backend structure.
+                </p>
+                <a
+                  href="https://docs.apso.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex font-display text-[13px] font-semibold text-brand"
+                >
+                  Open documentation ↗
+                </a>
               </div>
-            )}
-          </header>
-          <article className="prose-custom">{children}</article>
+            </aside>
+            <article className="prose-custom min-w-0">{children}</article>
+          </div>
         </Container>
       </Section>
 
-      {/* CTA band at bottom of every content page */}
-      <section className="py-16 md:py-20 bg-bg-1 border-t border-line-1">
-        <Container className="text-center max-w-[860px]">
-          <h2 className="text-h3 text-fg-1 mb-3">
-            Ready to try Apso?
-          </h2>
-          <p className="text-fg-3 mb-6">
-            Generate a production backend from a schema, own every line, and start for free.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href={APP_URL} external>
-              Start Building Free
-            </Button>
-            <Button href={DOCS_URL} external variant="outline">
-              Read the Docs
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <PageCta />
     </>
   );
 }

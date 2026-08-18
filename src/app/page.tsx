@@ -1,8 +1,9 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
+import { StarterBackends } from "@/components/sections/starter-backends";
+import { FullStack } from "@/components/sections/full-stack";
 import { BrandIntro } from "@/components/sections/brand-intro";
-import { Comparison } from "@/components/sections/comparison";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { SocialProof } from "@/components/sections/social-proof";
@@ -17,10 +18,11 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <StarterBackends />
+        <FullStack />
         <BrandIntro />
-        <Comparison />
-        <FeatureGrid />
         <HowItWorks />
+        <FeatureGrid />
         <SocialProof />
         <CtaBand />
       </main>

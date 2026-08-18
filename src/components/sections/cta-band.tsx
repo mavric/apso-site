@@ -1,46 +1,34 @@
-import Image from "next/image";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import { APP_URL, DOCS_URL } from "@/lib/constants";
 
 export function CtaBand() {
   return (
-    <section className="relative py-20 md:py-24 bg-bg-1 overflow-hidden">
-      {/* Background dot pattern */}
-      <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{ backgroundImage: "url(/images/section-dot-bg.png)", backgroundSize: "24px 24px" }}
-        aria-hidden="true"
-      />
-      <Container className="relative text-center max-w-[860px]">
-        {/* Dogs header illustration */}
-        <div className="mb-8 flex justify-center">
-          <Image
-            src="/images/dogs-header.svg"
-            alt=""
-            width={200}
-            height={80}
-            className="h-16 w-auto opacity-80"
-            aria-hidden="true"
-          />
-        </div>
-        <h2 className="text-h2 text-fg-1 mb-4">
-          Stop rebuilding backends from scratch
-        </h2>
-        <p className="text-lead text-fg-3 mb-4">
-          Define a schema. Generate an open-source TypeScript, Golang, or Python backend.
-          Deploy to AWS. Own every line and start building for free with the open-source CLI.
-        </p>
-        <p className="text-sm text-fg-4 mb-8">
-          Start without a credit card, keep the code, and use Apache-2.0 licensed templates.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href={APP_URL} external size="lg">
-            Start Building Free
-          </Button>
-          <Button href={DOCS_URL} external variant="outline" size="lg">
-            Read the Docs
-          </Button>
+    <section id="deploy" className="border-y border-white/10 bg-navy py-16 text-white md:py-20">
+      <Container>
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <div className="max-w-[760px]">
+            <p className="font-mono text-[11px] uppercase text-accent">Build on a foundation you own</p>
+            <h2 className="mt-4 font-display text-[34px] font-bold leading-tight text-white md:text-[40px]">
+              Give your product a backend that can grow with it
+            </h2>
+            <p className="mt-4 max-w-[680px] text-[16px] leading-7 text-white/65">
+              Start in the service builder or connect Apso to Claude or Codex. Apso teaches your agent the backend conventions, gives it the project tools, and keeps the generated service consistent as it grows.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Button href={APP_URL} external size="lg" className="min-w-[190px]">
+              Start building
+            </Button>
+            <a
+              href={`${DOCS_URL}/develop/tools/ai-assisted-development`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-w-[190px] items-center justify-center rounded-sm border border-white/25 px-6 py-4 font-display text-[15px] font-semibold text-white transition-colors hover:border-white/50"
+            >
+              Make your agent an expert
+            </a>
+          </div>
         </div>
       </Container>
     </section>

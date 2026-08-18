@@ -17,11 +17,11 @@ The issue is not the agent. The issue is where the guardrails live. When securit
 
 ## The Determinism Boundary
 
-Apso puts the guardrails in the generator, not the model. You define your data model in a single `.apsorc` configuration file. The CLI deterministically generates a complete backend with CRUD endpoints, authentication, multi-tenancy, database migrations, and deployment infrastructure.
+Apso puts the guardrails in the generator, not the model. You define your data model in a single `.apsorc` configuration file. Apso then generates a complete backend with CRUD endpoints, authentication, multi-tenancy, database migrations, and deployment infrastructure.
 
 The same schema and CLI version produce the same output on any model.
 
-The agent still drives the process. It can generate the schema, validate it, and iterate on it through the built-in MCP server. But the agent's reasoning collapses into a reviewable spec, and the generator produces the guarded output from that spec. The agent decides *what* to build. The CLI decides *how*.
+The agent still drives the process. It can generate the schema, validate it, and iterate on it through the built-in MCP server. The agent's reasoning becomes a reviewable spec, and the generator produces the guarded output from that spec. The agent decides *what* to build. Apso decides *how*.
 
 We call this the **determinism boundary**: the line between nondeterministic agent reasoning and deterministic code generation. Everything above the boundary (intent, schema design, iteration) is the agent's domain. Everything below (structure, security, deployment) is locked in the generator.
 
@@ -52,7 +52,7 @@ Define your entities, fields, relationships, and auth rules in `.apsorc`:
 }
 ```
 
-Run `apso server scaffold` and get a complete backend: controller routes, service layer, repository layer, database migrations, error handling, input validation, and deployment config. Apso supports TypeScript, Golang, and Python.
+Approve the model and Apso generates a complete backend: controller routes, service layer, repository layer, database migrations, error handling, input validation, and deployment config. Apso supports TypeScript, Golang, and Python.
 
 ## What Makes This Different
 
@@ -64,17 +64,12 @@ Run `apso server scaffold` and get a complete backend: controller routes, servic
 
 **Safe regeneration.** Generated code lives in `src/autogen/`. Your custom business logic lives in `src/extensions/`. Regenerate as many times as you want without losing your work.
 
-**Agent-ready.** The built-in MCP server lets any MCP-capable editor (Claude Code, Cursor, Copilot) discover and drive Apso without leaving the IDE.
+**Agent-ready.** The built-in MCP server lets Claude, Codex, and other MCP-capable coding environments discover and drive Apso without leaving the development workflow.
 
 ## Getting Started
 
-```bash
-npm install -g @apso/cli
-apso server new --name my-api --language typescript
-# Edit .apsorc with your schema
-apso server scaffold -l typescript
-```
+Connect the Apso MCP server and skills to Claude or Codex. Describe the product, the actors, and the rules that separate their data. Your agent can select a starter backend, adapt the schema, validate it, and generate the service through Apso. You review the model before generation and the normal framework code afterward.
 
-Full documentation is available at [docs.apso.ai](https://docs.apso.ai).
+The [Apso quickstart](https://docs.apso.dev/get-started/quickstart) covers the connection and first generation workflow.
 
 The agent decides what to build. Apso decides how. Start building at [app.apso.cloud](https://app.apso.cloud).

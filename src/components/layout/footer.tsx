@@ -7,19 +7,19 @@ export function Footer() {
   return (
     <footer className="border-t border-line-1 bg-bg-0 py-16">
       <Container>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-[1.25fr_repeat(4,1fr)]">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/logo-footer.svg"
+                src="/images/logo.svg"
                 alt="Apso"
-                width={102}
+                width={128}
                 height={48}
                 className="h-9 w-auto"
               />
             </Link>
             <p className="mt-3 text-sm text-fg-4 leading-relaxed">
-              Agent-driven backends, deterministically generated.
+              The backend foundation for AI-built software.
             </p>
             {/* Social */}
             <div className="mt-4 flex gap-4">
@@ -80,8 +80,9 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-6 border-t border-line-1 text-sm text-fg-5">
-          &copy; {new Date().getFullYear()} Mavric Technology, LLC. All rights reserved.
+        <div className="mt-12 flex flex-col gap-2 border-t border-line-1 pt-6 text-sm text-fg-5 sm:flex-row sm:items-center sm:justify-between">
+          <span>&copy; {new Date().getFullYear()} Mavric Technology, LLC.</span>
+          <span>Consistent backend code with no required Apso runtime.</span>
         </div>
       </Container>
     </footer>

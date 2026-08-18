@@ -1,74 +1,88 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { Bot, BriefcaseBusiness, Code2, GitPullRequest, Layers3, Users } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
+import { PageHero } from "@/components/marketing/page-hero";
+import { PageCta } from "@/components/marketing/page-cta";
+import { HeroLedger } from "@/components/marketing/hero-ledger";
 
 export const metadata: Metadata = {
-  title: "Customers",
-  description:
-    "See how teams use Apso to generate and deploy TypeScript, Golang, and Python backends.",
+  title: "Who Apso Is For",
+  description: "See how founders, delivery teams, and platform teams use Apso to generate consistent backend services they own.",
 };
 
-const useCases = [
+const teams = [
   {
-    title: "SaaS Startups",
-    description:
-      "Ship a multi-tenant backend in minutes. Skip the weeks of boilerplate scaffolding and go straight to building product-specific features.",
+    title: "Founder-led product teams",
+    body: "Move from product requirements to a credible backend before hiring a full infrastructure function. Keep code that the next engineer can inherit.",
+    outcome: "A backend the company can grow into",
+    icon: Bot,
   },
   {
-    title: "Consultancies",
-    description:
-      "Standardize backend delivery across client projects. Same patterns, same quality, every engagement. Hand off code the client owns outright.",
+    title: "Consultancies and delivery teams",
+    body: "Start client services from the same reviewed patterns, then adapt the schema and business logic to each engagement.",
+    outcome: "Consistent delivery without generic output",
+    icon: BriefcaseBusiness,
   },
   {
-    title: "Enterprise Teams",
-    description:
-      "Enforce consistent API contracts across services. Audit a spec diff instead of a code diff. Deploy to your own cloud with zero vendor lock-in.",
+    title: "Platform and engineering teams",
+    body: "Give product teams an approved path to create services while keeping architecture, permissions, and deployment behavior legible.",
+    outcome: "A repeatable service standard",
+    icon: Layers3,
   },
 ];
 
 export default function CustomersPage() {
   return (
     <>
-      <Section>
+      <PageHero
+        eyebrow="Who Apso is for"
+        title="For teams that need speed and a backend they can inherit"
+        description="Apso gives agents, developers, and delivery teams one way to turn product intent into consistent service code without creating a new platform dependency."
+        actions={
+          <>
+            <a href="#teams" className="inline-flex min-h-12 items-center justify-center rounded-sm bg-brand px-6 font-display text-[14px] font-semibold text-white hover:bg-brand-hover">Find your workflow</a>
+            <a href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/20 px-6 font-display text-[14px] font-semibold text-white hover:border-white/45">Discuss your team</a>
+          </>
+        }
+        meta={["Founder-led", "Client delivery", "Internal platform teams"]}
+        visual={
+          <HeroLedger
+            label="Shared operating model"
+            rows={[
+              { label: "Agent proposes", value: "Turn the product idea into a schema and service boundary.", icon: Bot },
+              { label: "Team reviews", value: "Inspect relationships, access rules, migrations, and generated code.", icon: GitPullRequest },
+              { label: "Service remains owned", value: "Extend and operate the backend with normal engineering tools.", icon: Code2 },
+            ]}
+            footer="one foundation across different team shapes"
+          />
+        }
+      />
+
+      <Section id="teams">
         <Container>
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="mb-10 grid gap-5 border-b border-line-1 pb-7 lg:grid-cols-[1fr_420px] lg:items-end">
             <div>
-              <p className="text-eyebrow text-brand mb-4">Customers</p>
-              <h1 className="text-h1 text-fg-1 mb-6">
-                Teams building with Apso
-              </h1>
-              <p className="text-lead text-fg-3">
-                Developers and teams use Apso to generate production backends, deploy to AWS,
-                and own every line of code. From solo founders to enterprise platform teams.
-              </p>
+              <p className="font-mono text-[10px] uppercase text-brand">Team fit</p>
+              <h2 className="mt-3 font-display text-[31px] font-bold text-fg-1">A useful boundary between product intent and service code</h2>
             </div>
-            <div className="flex justify-center">
-              <Image
-                src="/images/demo-pets.png"
-                alt="Apso dog mascots representing diverse development teams"
-                width={660}
-                height={120}
-                className="w-full max-w-[560px] h-auto"
-              />
-            </div>
+            <p className="text-[14px] leading-6 text-fg-4">The workflow stays the same. The reason each team uses it changes with its delivery model.</p>
           </div>
 
-          {/* Use case cards */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {useCases.map((item) => (
-              <Card key={item.title} padding="lg" className="flex flex-col">
-                <div className="h-1.5 w-12 rounded-full bg-brand/20 mb-5" />
-                <h3 className="font-display font-700 text-[22px] text-fg-1 mb-3 leading-tight">
-                  {item.title}
-                </h3>
-                <p className="text-[15px] text-fg-3 leading-relaxed flex-1">
-                  {item.description}
-                </p>
-              </Card>
+          <div className="grid border-l border-t border-line-1 lg:grid-cols-3">
+            {teams.map(({ title, body, outcome, icon: Icon }, index) => (
+              <article key={title} className="flex min-h-[360px] flex-col border-b border-r border-line-1 p-7">
+                <div className="flex items-center justify-between">
+                  <Icon aria-hidden="true" className="h-6 w-6 text-brand" />
+                  <span className="font-mono text-[10px] text-fg-5">0{index + 1}</span>
+                </div>
+                <h3 className="mt-9 font-display text-[24px] font-bold leading-tight text-fg-1">{title}</h3>
+                <p className="mt-4 text-[14px] leading-6 text-fg-4">{body}</p>
+                <div className="mt-auto border-t border-line-1 pt-5">
+                  <p className="font-mono text-[9px] uppercase text-fg-5">Desired outcome</p>
+                  <p className="mt-2 font-display text-[14px] font-semibold text-fg-1">{outcome}</p>
+                </div>
+              </article>
             ))}
           </div>
         </Container>
@@ -76,56 +90,39 @@ export default function CustomersPage() {
 
       <Section bg="gray">
         <Container>
-          <p className="text-eyebrow text-fg-4 mb-8">Early Access</p>
-          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center rounded-lg border border-line-1 bg-bg-0 p-8">
+          <div className="grid gap-10 lg:grid-cols-[340px_1fr] lg:gap-14">
             <div>
-              <Image
-                src="/images/avatar-group.png"
-                alt="Team avatars"
-                width={140}
-                height={44}
-                className="h-10 w-auto mb-5"
-              />
-              <h2 className="text-h3 text-fg-1 mb-3">Early teams are building now</h2>
-              <p className="text-fg-3 text-sm leading-relaxed">
-                The first Apso teams are using the same product surface in different buying
-                motions: founder-led builds, client delivery, and platform standardization.
-              </p>
+              <Users aria-hidden="true" className="h-7 w-7 text-brand" />
+              <h2 className="mt-5 font-display text-[30px] font-bold text-fg-1">One handoff the whole team can inspect</h2>
+              <p className="mt-4 text-[14px] leading-6 text-fg-4">The schema becomes the reviewable boundary between the product conversation and the generated implementation.</p>
             </div>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <ol className="border-t border-line-1">
               {[
-                ["Founder-led", "Ship the first backend without locking the company into a hosted runtime."],
-                ["Agency-led", "Start each client project from the same auditable backend pattern."],
-                ["Platform-led", "Give teams a standard way to generate services without central bottlenecks."],
-              ].map(([title, description]) => (
-                <div key={title} className="rounded-sm border border-line-1 bg-bg-1 p-5">
-                  <h3 className="font-display font-700 text-[17px] text-fg-1 mb-2">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-fg-3 leading-relaxed">
-                    {description}
-                  </p>
-                </div>
+                ["Describe", "The agent captures actors, resources, access rules, and the important product workflows."],
+                ["Review", "The team checks the schema and service boundary before generation expands the change."],
+                ["Generate", "Apso produces the APIs, migrations, and infrastructure with the same project structure."],
+                ["Extend", "Developers add the business logic that differentiates the product in familiar framework code."],
+              ].map(([label, body], index) => (
+                <li key={label} className="grid gap-3 border-b border-line-1 py-5 sm:grid-cols-[36px_110px_1fr] sm:items-start">
+                  <span className="font-mono text-[10px] text-fg-5">0{index + 1}</span>
+                  <span className="font-display text-[15px] font-semibold text-fg-1">{label}</span>
+                  <span className="text-[13px] leading-6 text-fg-4">{body}</span>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </Container>
       </Section>
 
-      {/* CTA */}
-      <Section>
-        <Container className="text-center max-w-[860px]">
-          <h2 className="text-h2 text-fg-1 mb-4">
-            Ready to join them?
-          </h2>
-          <p className="text-fg-3 mb-8">
-            Start building your backend today. CLI generation is free forever.
-          </p>
-          <Button href={APP_URL} external size="lg">
-            Start Building Free
-          </Button>
-        </Container>
-      </Section>
+      <PageCta
+        eyebrow="See whether the model fits"
+        title="Bring your team and a representative backend idea"
+        description="We will help you map the service boundary, ownership requirements, and deployment model before you commit."
+        primaryLabel="Talk to the team"
+        primaryHref="/contact"
+        secondaryLabel="Explore use cases"
+        secondaryHref="/use-cases"
+      />
     </>
   );
 }

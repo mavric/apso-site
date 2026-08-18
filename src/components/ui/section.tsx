@@ -14,7 +14,7 @@ const bgStyles = {
 
 export function Section({ children, className = "", bg = "white", id }: SectionProps) {
   return (
-    <section id={id} className={`py-20 md:py-24 ${bgStyles[bg]} ${className}`}>
+    <section id={id} className={`py-16 md:py-20 ${bgStyles[bg]} ${className}`}>
       {children}
     </section>
   );

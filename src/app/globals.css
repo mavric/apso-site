@@ -38,8 +38,8 @@
 
   /* Radius */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
   --radius-pill: 2000px;
 
   /* Fonts */
@@ -52,15 +52,25 @@ body {
   font-family: var(--font-body);
   color: var(--color-fg-2);
   background: var(--color-bg-0);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  color: white;
+  background: var(--color-brand);
+}
+
+:focus-visible {
+  outline-color: var(--color-brand);
 }
 
 /* Typography utilities */
 .text-display {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 52px;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-size: 60px;
+  line-height: 1.04;
+  letter-spacing: 0;
 }
 
 .text-h1 {
@@ -68,7 +78,7 @@ body {
   font-weight: 800;
   font-size: 44px;
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .text-h2 {
@@ -82,7 +92,7 @@ body {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 28px;
-  line-height: 1.5;
+  line-height: 1.25;
 }
 
 .text-lead {
@@ -96,7 +106,7 @@ body {
   font-size: 16px;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .text-mono {
@@ -248,10 +258,50 @@ body {
   color: var(--color-fg-3);
 }
 
+.privacy-document {
+  color: var(--color-fg-3);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.privacy-document .document-intro {
+  margin-bottom: 2.5rem;
+  color: var(--color-fg-2);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.privacy-document section + section {
+  margin-top: 2.5rem;
+}
+
+.privacy-document h2 {
+  margin-bottom: 0.85rem;
+  color: var(--color-fg-1);
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.privacy-document p + p {
+  margin-top: 1rem;
+}
+
+.privacy-document a {
+  color: var(--color-brand);
+}
+
+.privacy-document a:hover {
+  color: var(--color-brand-hover);
+  text-decoration: underline;
+}
+
 /* Responsive typography */
 @media (max-width: 768px) {
   .text-display {
-    font-size: 36px;
+    font-size: 42px;
+    line-height: 1.08;
   }
 
   .text-h1 {
@@ -264,5 +314,11 @@ body {
 
   .text-h3 {
     font-size: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .text-display {
+    font-size: 36px;
   }
 }

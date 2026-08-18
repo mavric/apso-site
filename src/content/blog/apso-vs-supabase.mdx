@@ -7,7 +7,7 @@ author: "Apso Team"
 
 When building modern applications, developers face a critical decision: how to handle the backend. Both Apso and Supabase promise to accelerate backend development, but they take fundamentally different approaches.
 
-Supabase offers a managed platform where you use their infrastructure, APIs, and services. Apso generates production-ready backend code that you own, customize, and deploy on your own AWS infrastructure. Supabase is a service you subscribe to. Apso is a code generator that produces a codebase you control.
+Supabase offers a managed platform where you use its infrastructure, APIs, and services. Apso generates backend code that you own, customize, and run with Apso-managed infrastructure or in your own cloud account. The core decision is whether you want to adopt a backend platform or generate the application service itself.
 
 ## Quick Comparison
 
@@ -18,7 +18,7 @@ Supabase offers a managed platform where you use their infrastructure, APIs, and
 | **Authentication** | BYOA (Auth0, Clerk, BetterAuth, Cognito) | Built-in Supabase Auth |
 | **Real-time** | Not native (extensible) | First-class real-time subscriptions |
 | **Languages** | TypeScript, Golang, and Python backends | N/A (SDK-based consumption) |
-| **Deployment** | Your AWS account | Managed Supabase cloud or self-host |
+| **Deployment** | Apso-managed or your cloud | Managed Supabase cloud or self-hosted |
 
 ## Where Supabase Excels
 
@@ -28,11 +28,11 @@ Supabase has real strengths that make it the right choice for many projects.
 
 **The dashboard** covers common database and auth operations. It gives teams a table editor, SQL runner, log explorer, and auth management, but the hosted platform remains the source of truth for those workflows.
 
-**The free tier** is generous (500 MB database, 50K MAUs) and viable for hobby projects and MVPs.
+**The hosted experience** gives teams a fast way to begin with Postgres, authentication, storage, and platform tooling in one place.
 
 ## Where Apso Excels
 
-**Code ownership.** When you run `apso server scaffold`, you get a complete backend codebase in your repository. This is real TypeScript, Golang, or Python backend code. You can read every line, debug with standard tools, and trace request flows from route handler to database query.
+**Code ownership.** When your agent generates a service through Apso, you get a complete backend codebase in your repository. This is normal TypeScript, Golang, or Python backend code. You can inspect it, debug it with standard tools, and trace request flows from route handler to database query.
 
 **Open-source generation path.** The generator, templates, and generated TypeScript, Golang, and Python stacks are open source. That makes code ownership practical, because the toolchain and the output are inspectable.
 

@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowRight, Boxes, Code2, GitBranch, Scale, Server } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/marketing/page-hero";
+import { PageCta } from "@/components/marketing/page-cta";
+import { HeroLedger } from "@/components/marketing/hero-ledger";
 import { getAllContent } from "@/lib/content";
-import { APP_URL } from "@/lib/constants";
 import type { CompareFrontmatter } from "@/types/content";
 
 export const metadata: Metadata = {
-  title: "Compare Apso to Alternatives",
-  description:
-    "See how Apso compares to Supabase, Firebase, Appwrite, Hasura, Xano, and other backend platforms.",
+  title: "Compare Apso to Backend Platforms",
+  description: "Compare Apso with managed backend platforms, visual builders, and generated API products by ownership, runtime, and workflow.",
+};
+
+const competitorDetails: Record<string, { initial: string; category: string; color: string }> = {
+  Appwrite: { initial: "A", category: "Open-source backend platform", color: "bg-[#f02e65]" },
+  Firebase: { initial: "F", category: "Managed application platform", color: "bg-[#f59e0b]" },
+  Hasura: { initial: "H", category: "GraphQL API platform", color: "bg-[#1eb4d4]" },
+  Supabase: { initial: "S", category: "Managed Postgres platform", color: "bg-[#3ecf8e]" },
+  Xano: { initial: "X", category: "Visual backend builder", color: "bg-[#753cff]" },
 };
 
 export default function CompareIndex() {
@@ -20,66 +27,98 @@ export default function CompareIndex() {
 
   return (
     <>
-      <Section>
+      <PageHero
+        eyebrow="Compare"
+        title="Choose the backend model, not only the feature list"
+        description="Backend products can look similar in a checklist while leaving your team with very different code, operating boundaries, and exit paths. These guides make that tradeoff explicit."
+        actions={
+          <a href="#comparisons" className="inline-flex min-h-12 items-center justify-center rounded-sm bg-brand px-6 font-display text-[14px] font-semibold text-white hover:bg-brand-hover">
+            Browse comparisons
+          </a>
+        }
+        meta={["Practical tradeoffs", "Clear best-fit guidance", "Ownership explained"]}
+        visual={
+          <HeroLedger
+            label="Evaluation model"
+            rows={[
+              { label: "Application layer", value: "Decide whether the API is platform behavior or code in your repository.", icon: Code2 },
+              { label: "Runtime boundary", value: "Understand who controls deployment, infrastructure, and operations.", icon: Server },
+              { label: "Exit path", value: "Know what keeps running when the vendor relationship changes.", icon: GitBranch },
+            ]}
+            footer="compare architecture before convenience"
+          />
+        }
+      />
+
+      <Section id="comparisons">
         <Container>
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/images/dogs-header.svg"
-                alt=""
-                width={160}
-                height={64}
-                className="h-14 w-auto opacity-80"
-                aria-hidden="true"
-              />
+          <div className="grid gap-8 lg:grid-cols-[320px_1fr] lg:gap-14">
+            <div>
+              <p className="font-mono text-[10px] uppercase text-brand">Platform guides</p>
+              <h2 className="mt-3 font-display text-[30px] font-bold leading-tight text-fg-1">Find the model that fits your team</h2>
+              <p className="mt-4 text-[14px] leading-6 text-fg-4">
+                Each guide covers where the other product is strong, where Apso differs, and which team should choose each path.
+              </p>
+              <div className="mt-8 space-y-4 border-t border-line-1 pt-5">
+                <DecisionItem icon={Boxes} label="Product surface" value="Hosted platform or generated service" />
+                <DecisionItem icon={Scale} label="Primary tradeoff" value="Convenience, control, and portability" />
+                <DecisionItem icon={GitBranch} label="Source of truth" value="Vendor configuration or your repository" />
+              </div>
             </div>
-            <p className="text-eyebrow text-brand mb-4">Compare</p>
-            <h1 className="text-h1 text-fg-1 mb-4">Apso vs. Alternatives</h1>
-            <p className="text-lead text-fg-3 max-w-[640px] mx-auto">
-              Practical comparisons for teams choosing between managed platforms,
-              visual backend builders, generated APIs, and backend code they own.
-            </p>
+
+            {comparisons.length === 0 ? (
+              <p className="text-fg-4">Comparison pages are being prepared.</p>
+            ) : (
+              <div className="border-t border-line-1">
+                {comparisons.map((item, index) => {
+                  const details = competitorDetails[item.frontmatter.competitor] ?? {
+                    initial: item.frontmatter.competitor.charAt(0),
+                    category: "Backend platform",
+                    color: "bg-fg-3",
+                  };
+                  return (
+                    <Link
+                      key={item.slug}
+                      href={`/compare/${item.slug}`}
+                      className="group grid gap-4 border-b border-line-1 py-6 transition-colors hover:bg-bg-1 sm:grid-cols-[48px_1fr_auto] sm:items-center sm:px-4"
+                    >
+                      <span className={`flex h-11 w-11 items-center justify-center rounded-sm font-display text-[18px] font-bold text-white ${details.color}`}>
+                        {details.initial}
+                      </span>
+                      <span>
+                        <span className="font-mono text-[9px] uppercase text-fg-5">0{index + 1} / {details.category}</span>
+                        <span className="mt-1 block font-display text-[21px] font-bold text-fg-1">{item.frontmatter.title}</span>
+                        <span className="mt-1 block max-w-[680px] text-[13px] leading-5 text-fg-4">{item.frontmatter.description}</span>
+                      </span>
+                      <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-line-1 text-fg-3 transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                        <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
-
-          {comparisons.length === 0 ? (
-            <p className="text-center text-fg-4">Comparison pages coming soon.</p>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {comparisons.map((item) => (
-                <Link key={item.slug} href={`/compare/${item.slug}`}>
-                  <Card padding="lg" className="h-full hover:border-brand/40 transition-colors group">
-                    <div className="h-1.5 w-12 rounded-full bg-accent/30 group-hover:bg-accent/50 transition-colors mb-5" />
-                    <h2 className="font-display font-700 text-[22px] text-fg-1 mb-3 leading-tight">
-                      {item.frontmatter.title}
-                    </h2>
-                    <p className="text-[15px] text-fg-3 leading-relaxed">
-                      {item.frontmatter.description}
-                    </p>
-                    <p className="mt-4 text-sm text-brand font-medium group-hover:text-brand-hover transition-colors">
-                      Read comparison
-                    </p>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          )}
         </Container>
       </Section>
 
-      <Section bg="gray">
-        <Container className="text-center max-w-[720px]">
-          <h2 className="text-h3 text-fg-1 mb-3">
-            See for yourself
-          </h2>
-          <p className="text-fg-3 mb-6">
-            Generate a backend from a schema. Compare the output to what you
-            would write by hand.
-          </p>
-          <Button href={APP_URL} external>
-            Start Building Free
-          </Button>
-        </Container>
-      </Section>
+      <PageCta
+        eyebrow="Evaluate the output"
+        title="Compare a generated backend to the platform you use today"
+        description="Bring a representative schema, review the service Apso produces, and make the ownership tradeoff concrete."
+      />
     </>
+  );
+}
+
+function DecisionItem({ icon: Icon, label, value }: { icon: typeof Boxes; label: string; value: string }) {
+  return (
+    <div className="flex items-start gap-3">
+      <Icon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+      <div>
+        <p className="font-display text-[13px] font-semibold text-fg-1">{label}</p>
+        <p className="mt-0.5 text-[12px] leading-5 text-fg-5">{value}</p>
+      </div>
+    </div>
   );
 }

@@ -1,10 +1,10 @@
 ---
-title: "SaaS Backend"
-description: "How to use Apso to build a multi-tenant SaaS backend with authentication, data scoping, and AWS deployment."
+title: "Build a Multi-Tenant SaaS Backend"
+description: "Use your coding agent and Apso to define a SaaS data model, enforce tenant boundaries, generate the service, and keep the resulting code."
 date: "2026-06-01"
 ---
 
-Building a SaaS backend means solving the same problems every time: multi-tenancy, authentication, role-based access, CRUD APIs, database migrations, and deployment. Apso generates all of this from a single schema file.
+Building a SaaS backend means solving the same structural problems every time: multi-tenancy, authentication, role-based access, APIs, database migrations, and deployment. Connect Apso to Claude or Codex, describe the product and its access rules, then review the schema your agent creates before Apso generates the service.
 
 ## The Multi-Tenancy Problem
 
@@ -49,14 +49,12 @@ Apso deploys your SaaS backend to AWS using Lambda for compute, RDS for the data
 
 Each service runs independently with its own scaling, domain, and database. Scale your API service separately from your billing service or notification service.
 
-## Getting Started
+## Build It With Your Agent
 
-```bash
-npm install -g @apso/cli
-apso server new --name my-saas --language typescript
-# Define entities, relationships, auth, and scoping in .apsorc
-apso server scaffold -l typescript
-npm run start:dev
-```
+1. Connect the Apso MCP server and skills to Claude or Codex.
+2. Describe the users, workspaces, roles, resources, and tenant boundaries in your product.
+3. Ask your agent to start from the Multi-Tenant Workspaces model and adapt it to your requirements.
+4. Review the resulting `.apsorc` schema, especially relationships, `scopeBy` rules, and authentication context.
+5. Let the agent generate the service through Apso, then run the normal framework tests before adding product-specific logic.
 
-Full documentation at [docs.apso.ai](https://docs.apso.ai).
+Use the [Apso quickstart](https://docs.apso.dev/get-started/quickstart) for connection and generation steps.

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Apso pricing plans. CLI generation is free forever. Pay only when you deploy. Full code ownership on every plan.",
+    "Generate backend code for free, then choose managed hosting, team controls, or deployment into your own cloud.",
 };
 
 export default function PricingLayout({

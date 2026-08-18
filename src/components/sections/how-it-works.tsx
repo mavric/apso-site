@@ -1,145 +1,75 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
-
-function CheckIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="shrink-0 mt-0.5">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M20.56 9.21L23 12L20.56 14.79L20.9 18.48L17.29 19.3L15.4 22.49L12 21.03L8.6 22.5L6.71 19.31L3.1 18.49L3.44 14.79L1 12L3.44 9.2L3.1 5.5L6.71 4.69L8.6 1.5L12 2.96L15.4 1.5L17.29 4.7L20.9 5.52L20.56 9.21ZM6.29 12.91L10.09 16.72L17.42 9.37L15.94 7.89L10.09 13.76L7.77 11.43L6.29 12.91Z"
-        fill="#01E67A"
-      />
-    </svg>
-  );
-}
+import { BookOpenCheck, Braces, PlugZap } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    title: "Define Your Schema",
-    description:
-      "Describe your backend in a single .apsorc file, or let an AI agent generate it from a conversation. Entities, relationships, auth rules, and validation constraints collapse into one reviewable, version-controlled spec.",
-    features: [
-      "Declare your entire data model in one file",
-      "Review a 20-line spec diff instead of a 4,000-line code diff",
-      "Any MCP-capable agent can generate and validate the schema",
-      "Version-controlled alongside your application code",
-    ],
-    replaces: [
-      "Agent-authored boilerplate that drifts between runs",
-      "Hand-maintained entity definitions across files",
-      "Prompt-dependent code generation",
-    ],
-    image: "/images/feature-1.svg",
+    label: "Teach",
+    title: "Give your agent backend expertise",
+    description: "Apso gives Claude or Codex repeatable rules for schema design, tenancy, auth, migrations, extensions, and deployment. The agent can apply the right backend pattern without waiting for you to name it.",
+    example: "Expert rules + task skills",
+    icon: BookOpenCheck,
   },
   {
     number: "02",
-    title: "Generate a Production Backend",
-    description:
-      "Run the CLI or let your agent call it through the MCP server. The deterministic generator produces a complete backend with API endpoints, database migrations, authentication, and validation in the language your team knows.",
-    features: [
-      "TypeScript, Golang, or Python backend output from the same schema",
-      "Generated code lives in autogen/, your logic lives in extensions/",
-      "Regenerate at any time without losing custom work",
-      "Output is identical regardless of which model drove it",
-    ],
-    replaces: [
-      "Manual TypeScript or Python backend scaffolding",
-      "Hand-written migration scripts",
-      "Nondeterministic agent-written backends",
-    ],
-    image: "/images/feature-2.svg",
+    label: "Ground",
+    title: "Connect it to the real project",
+    description: "The Apso MCP server gives the agent access to the current schema and generation tools. It can inspect, design, validate, and build from what your project actually contains.",
+    example: "inspect → design → validate",
+    icon: PlugZap,
   },
   {
     number: "03",
-    title: "Ship to Production",
-    description:
-      "Deploy to managed AWS infrastructure in one command. When you outgrow managed hosting, eject to your own cloud without an Apso runtime, a rewrite, or lock-in.",
-    features: [
-      "One-command deploy to Lambda, RDS, and API Gateway",
-      "Eject to your own AWS, GCP, or Azure account anytime",
-      "Generated code has no proprietary imports or vendor SDK",
-      "Apache-2.0 licensed templates you own and control",
-    ],
-    replaces: [
-      "Manual CDK and Terraform provisioning",
-      "Platform lock-in (Firebase, Supabase managed hosting)",
-      "Black-box runtimes you cannot inspect or modify",
-    ],
-    image: "/images/feature-3.svg",
+    label: "Build",
+    title: "Ask for the product outcome",
+    description: "Describe the workflow in plain language. Your agent chooses the Apso process, proposes the model, generates the service, and verifies the result before you review the code.",
+    example: 'You: "Add team invitations."',
+    icon: Braces,
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section>
+    <Section id="how-it-works">
       <Container>
-        <div className="text-center mb-16">
-          <p className="text-eyebrow text-brand mb-4">How It Works</p>
-          <h2 className="text-h2 text-fg-1 mb-3">Schema to deployed API in three steps</h2>
-          <p className="text-fg-3 max-w-[640px] mx-auto">
-            Run each step yourself or let an AI agent handle it through the MCP server. The result
-            is the same either way.
-          </p>
+        <div className="grid gap-6 lg:grid-cols-[1fr_420px] lg:items-end">
+          <div className="max-w-[760px]">
+            <p className="text-eyebrow mb-4 text-brand">How it works</p>
+            <h2 className="text-h2 text-fg-1">Turn your coding agent into a backend expert with Apso</h2>
+            <p className="mt-4 text-fg-3 leading-7">
+              Apso gives Claude, Codex, and other coding agents repeatable backend rules, specialized workflows, and project-aware tools. You describe the outcome. The agent designs, generates, and verifies the foundation.
+            </p>
+          </div>
+          <div className="border-l-2 border-accent pl-5">
+            <p className="font-mono text-[10px] uppercase text-brand">Backend expertise in context</p>
+            <p className="mt-2 text-[13px] leading-6 text-fg-4">
+              Schema design, access boundaries, extensions, migrations, generation, and verification become part of the agent&apos;s working context.
+            </p>
+          </div>
         </div>
-        <div className="space-y-20">
-          {steps.map((step, idx) => (
-            <div
+
+        <div className="mt-12 grid border-y border-line-1 lg:grid-cols-3">
+          {steps.map((step, index) => (
+            <article
               key={step.number}
-              className={`grid md:grid-cols-2 gap-12 items-center ${
-                idx % 2 === 1 ? "md:[direction:rtl]" : ""
-              }`}
+              className={`py-8 lg:px-8 ${
+                index > 0 ? "border-t border-line-1 lg:border-l lg:border-t-0" : "lg:pl-0"
+              } ${index === steps.length - 1 ? "lg:pr-0" : ""}`}
             >
-              <div className={idx % 2 === 1 ? "md:[direction:ltr]" : ""}>
-                <span className="font-display font-800 text-[56px] text-brand/15 leading-none block mb-2">
-                  {step.number}
+              <div className="flex items-center justify-between">
+                <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-line-1 bg-bg-1 text-brand">
+                  <step.icon aria-hidden="true" className="h-4 w-4" />
                 </span>
-                <h3 className="text-h2 text-fg-1 mb-3">{step.title}</h3>
-                <p className="text-fg-3 leading-relaxed mb-5">{step.description}</p>
-
-                <ul className="space-y-2.5 mb-6">
-                  {step.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-[15px] text-fg-2">
-                      <CheckIcon />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <div>
-                  <span className="text-[13px] font-display font-600 text-fg-4 uppercase tracking-wide mr-3">
-                    Replaces
-                  </span>
-                  <div className="inline-flex flex-wrap gap-2 mt-1">
-                    {step.replaces.map((tag) => (
-                      <Badge key={tag} variant="gray">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
+                <span className="text-[11px] font-semibold uppercase text-fg-5">{step.label}</span>
               </div>
-
-              <div className={`hidden md:flex justify-center ${idx % 2 === 1 ? "md:[direction:ltr]" : ""}`}>
-                <div className="relative w-full max-w-[520px]">
-                  <div
-                    className="absolute -inset-6 opacity-30 pointer-events-none rounded-2xl"
-                    style={{ backgroundImage: "url(/images/section-dot-bg.png)", backgroundSize: "20px 20px" }}
-                    aria-hidden="true"
-                  />
-                  <Image
-                    src={step.image}
-                    alt={`Step ${step.number}: ${step.title}`}
-                    width={480}
-                    height={360}
-                    className="relative w-full max-w-[440px] h-auto"
-                  />
-                </div>
+              <p className="mt-6 font-mono text-[10px] text-fg-5">{step.number}</p>
+              <h3 className="mt-2 font-display text-[22px] font-bold text-fg-1">{step.title}</h3>
+              <p className="mt-3 min-h-[120px] text-[14px] leading-6 text-fg-3">{step.description}</p>
+              <div className="mt-6 overflow-x-auto rounded-sm bg-navy px-4 py-3 font-mono text-[11px] text-white/70">
+                <span className="mr-2 text-accent">✓</span>{step.example}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </Container>

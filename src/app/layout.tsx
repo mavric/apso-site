@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} - Agent-Driven Backends, Deterministically Generated`,
+    default: `${SITE_NAME} - Deterministic Backend Generation for AI-Built Software`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,

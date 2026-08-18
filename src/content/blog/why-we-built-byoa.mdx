@@ -47,7 +47,7 @@ Your business logic talks to this interface, not to any provider-specific SDK. Y
 Imagine you are running your API with BetterAuth. Six months in, you decide to switch to Clerk. Here is what changes:
 
 1. Update the auth block in `.apsorc`
-2. Run `apso server scaffold`
+2. Ask your agent to regenerate the service through Apso
 3. Your guards are regenerated for Clerk's JWT format
 
 Your business logic? **Completely unchanged.** Your services still call `req.auth.userId`. Your multi-tenant data scoping still reads `req.auth.organizationId`. None of that changes.

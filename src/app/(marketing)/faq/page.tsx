@@ -1,159 +1,160 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { Bot, CircleDollarSign, Code2, HelpCircle, KeyRound, ServerCog } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
 import { Accordion } from "@/components/ui/accordion";
-import { APP_URL } from "@/lib/constants";
+import { PageHero } from "@/components/marketing/page-hero";
+import { PageCta } from "@/components/marketing/page-cta";
+import { HeroLedger } from "@/components/marketing/hero-ledger";
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Frequently asked questions about Apso, the backend generation platform. Learn about features, pricing, deployment, and code ownership.",
+  title: "Frequently Asked Questions",
+  description: "Answers about Apso generation, agent workflows, backend ownership, deployment, languages, authentication, and pricing.",
 };
 
 const generalQuestions = [
   {
     question: "What is Apso?",
-    answer:
-      "Apso is a backend generation platform. You define your data model in a .apsorc schema file, and Apso generates a complete production backend with REST API endpoints, authentication, multi-tenancy, database migrations, and AWS deployment infrastructure. The output is real TypeScript, Golang, or Python backend code in your repository. You own every line.",
+    answer: "Apso is the backend foundation for AI-built software. Your agent helps define the product and data model. Apso turns that intent into consistent APIs, migrations, infrastructure, and normal TypeScript, Python, or Go code in your repository.",
   },
   {
     question: "How is Apso different from Firebase or Supabase?",
-    answer:
-      "Firebase and Supabase are managed platforms. You build on top of their proprietary runtime and your backend logic lives inside their system. Apso generates standard backend code that you own and deploy yourself. There is no Apso runtime in the output. Stop using Apso and the code keeps working. Apso also supports Bring Your Own Auth, so you are not locked into a single provider.",
+    answer: "Firebase and Supabase provide hosted backend capabilities through their platform model. Apso generates the application service itself as code your team can inspect, modify, test, and operate. The important distinction is where the backend logic lives and what your team can take with it.",
   },
   {
-    question: "How is Apso different from Cursor or Copilot writing my backend?",
-    answer:
-      "When an AI agent writes your backend, the output varies with the model, the prompt, and the day. Two services built a week apart follow different patterns. When the model upgrades, your code changes. Apso puts the guardrails in the generator, not the model. The same schema produces the same output on any model. The agent decides what to build. The CLI decides how.",
+    question: "How is Apso different from asking an agent to write the backend?",
+    answer: "An agent is excellent at turning product intent into a proposed system. Apso gives that agent a repeatable generation boundary, so APIs created at different times follow the same service structure and security patterns. The agent shapes what you need, and Apso keeps the resulting foundation consistent.",
   },
   {
-    question: "What programming languages does Apso support?",
-    answer:
-      "TypeScript, Golang, and Python. The generated code follows each language's conventions and includes full type definitions, so your team works with familiar tools.",
+    question: "Which programming languages are supported?",
+    answer: "Apso generates TypeScript with NestJS, Python with FastAPI, and Go with Gin. The output follows each framework's normal project structure and tooling.",
   },
   {
-    question: "Do I own the code?",
-    answer:
-      "Yes. The generated code is standard backend code with no Apso imports, no vendor SDK, and no proprietary runtime. The generator and templates are open source, and the generated TypeScript, Golang, and Python stacks are open source. The service compiles, runs, and deploys with or without Apso.",
+    question: "Do we own the code?",
+    answer: "Yes. The generated backend lives in your repository. Your team can extend it, run it without Apso, and move it to another infrastructure provider. There is no proprietary Apso runtime required by the generated service.",
   },
 ];
 
 const technicalQuestions = [
   {
-    question: "What database does Apso use?",
-    answer:
-      "PostgreSQL on Amazon RDS. Each service gets its own database instance with automated backups, point-in-time recovery, and encryption at rest. The generated code uses TypeORM for TypeScript, SQLAlchemy for Python, or GORM for Golang.",
+    question: "How does an agent work with Apso?",
+    answer: "Apso turns Claude, Codex, or another compatible coding agent into an Apso specialist. Rules teach the agent Apso's architecture and guardrails. Task skills teach workflows such as schema design, auth, migrations, and feature development. MCP tools ground that expertise in the current project and let the agent inspect, validate, generate, and test without making you translate the work into CLI commands.",
+  },
+  {
+    question: "Which database does Apso use?",
+    answer: "Generated services use PostgreSQL. TypeScript services use TypeORM, Python services use SQLAlchemy, and Go services use GORM. Deployment configuration depends on the infrastructure model you choose.",
   },
   {
     question: "How does authentication work?",
-    answer:
-      "Apso uses Bring Your Own Auth (BYOA). Configure BetterAuth, Auth0, Clerk, AWS Cognito, API keys, or custom sessions. The generated auth guard produces a normalized AuthContext interface, so your business logic works the same regardless of which provider you choose. Switch providers by regenerating.",
+    answer: "Apso supports a bring-your-own-auth approach. The generated service receives a normalized authentication context while your team chooses the identity provider and session model that fit the product.",
   },
   {
-    question: "Can I customize the generated code?",
-    answer:
-      "Yes. Generated code lives in src/autogen/ and is rewritten on every regeneration. Your custom business logic goes in src/extensions/ and is never touched. Regenerate as many times as you want without losing your work.",
+    question: "Can we customize generated code?",
+    answer: "Yes. The service is normal framework code. Generated areas and extension points are separated so your team can add business logic while continuing to evolve the underlying schema and generated resources.",
   },
   {
     question: "How does multi-tenancy work?",
-    answer:
-      "Application-layer data scoping. Add a scopeBy field to your entities and Apso generates guards that automatically filter queries by the authenticated user's workspace. This works at the application layer, not at the database layer, so it is portable across databases and cloud providers.",
-  },
-  {
-    question: "Can any AI agent drive Apso?",
-    answer:
-      "Yes. The CLI includes a built-in MCP server. Any MCP-capable editor (Claude Code, Cursor, Copilot) can discover and operate Apso without leaving the IDE. The agent calls the CLI, and the CLI enforces the guardrails.",
+    answer: "Tenant boundaries are represented in the schema and enforced in the generated application layer. Resources can be scoped to a workspace or tenant so list, read, create, update, and delete behavior applies the same boundary.",
   },
 ];
 
 const pricingQuestions = [
   {
     question: "How much does Apso cost?",
-    answer:
-      "CLI generation is free forever on every plan. The Free tier includes 1 hosted service for testing. Pro is ~$25 per service per month with always-on compute, backups, custom domains, and 100 credits. Team is ~$99/mo flat with unlimited members. Enterprise plans have custom pricing with SSO, audit logs, and SLA guarantees.",
+    answer: "The Free plan is $0. Pro managed services are $25 per service each month. Team is $99 per workspace each month with unlimited members. Your Cloud starts at $40 per service each month plus your cloud costs. Enterprise pricing is based on infrastructure and governance requirements.",
   },
   {
-    question: "What are credits?",
-    answer:
-      "A shared balance for AI actions and deployments. About 1 AI action equals 1 credit, and 1 deploy equals 1-2 credits. Paid services include ~100 credits per month. Bring your own AI key to make AI actions free. No silent billing. Opt-in capped auto-refill only.",
+    question: "Does Apso charge per seat?",
+    answer: "No. The Team plan includes unlimited members in the workspace. Managed production services are billed separately.",
   },
   {
     question: "Is there vendor lock-in?",
-    answer:
-      "No. The generated code has no Apso runtime dependency. It is standard TypeScript, Golang, or Python backend code that compiles and runs without Apso. Ejection from managed hosting is free and clean. You pay for the automation, not for access to your own code.",
+    answer: "The generated service has no required Apso runtime. The code remains in your repository and can continue running if you stop using Apso. Managed infrastructure and automation are separate from your ownership of the backend code.",
   },
   {
-    question: "Can I deploy to my own cloud?",
-    answer:
-      "Yes. With Your Cloud (BYOC), you pay a per-service automation fee to Apso and your cloud provider directly. Apso never marks up your cloud bill. Available on Pro and above.",
+    question: "Can we deploy into our own cloud?",
+    answer: "Yes. Your Cloud keeps Apso generation and deployment automation while the infrastructure, credentials, and cloud bill stay in your account.",
   },
+];
+
+const categories = [
+  { id: "product", label: "Product and ownership", count: generalQuestions.length, icon: HelpCircle },
+  { id: "technical", label: "Technical workflow", count: technicalQuestions.length, icon: Code2 },
+  { id: "pricing", label: "Pricing and deployment", count: pricingQuestions.length, icon: CircleDollarSign },
 ];
 
 export default function FaqPage() {
   return (
     <>
+      <PageHero
+        eyebrow="Help center"
+        title="Clear answers about the backend foundation"
+        description="Understand what Apso generates, how it works with your coding agent, where the service runs, and what your team owns."
+        actions={
+          <>
+            <a href="#product" className="inline-flex min-h-12 items-center justify-center rounded-sm bg-brand px-6 font-display text-[14px] font-semibold text-white hover:bg-brand-hover">Browse answers</a>
+            <a href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/20 px-6 font-display text-[14px] font-semibold text-white hover:border-white/45">Ask a question</a>
+          </>
+        }
+        meta={[`${generalQuestions.length + technicalQuestions.length + pricingQuestions.length} answers`, "Product and technical", "Direct support available"]}
+        visual={
+          <HeroLedger
+            label="Popular topics"
+            rows={[
+              { label: "Agent workflow", value: "How Claude, Codex, MCP, and Apso work together.", icon: Bot },
+              { label: "Code ownership", value: "What is generated and how the service stays portable.", icon: KeyRound },
+              { label: "Deployment model", value: "Managed infrastructure or your own cloud account.", icon: ServerCog },
+            ]}
+            footer="contact the team when the answer depends on your system"
+          />
+        }
+      />
+
       <Section>
-        <Container className="max-w-[860px]">
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/images/dogs-header.svg"
-                alt=""
-                width={160}
-                height={64}
-                className="h-14 w-auto opacity-80"
-                aria-hidden="true"
-              />
-            </div>
-            <p className="text-eyebrow text-brand mb-4">FAQ</p>
-            <h1 className="text-h1 text-fg-1 mb-4">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-lead text-fg-3">
-              Everything you need to know about Apso. Cannot find the answer you are looking
-              for? <a href="/contact" className="text-brand hover:text-brand-hover">Get in touch</a>.
-            </p>
-          </div>
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[250px_minmax(0,820px)] lg:justify-center lg:gap-16">
+            <aside>
+              <div className="lg:sticky lg:top-28">
+                <p className="font-mono text-[10px] uppercase text-brand">Browse by topic</p>
+                <nav className="mt-4 border-t border-line-1" aria-label="FAQ categories">
+                  {categories.map(({ id, label, count, icon: Icon }) => (
+                    <a key={id} href={`#${id}`} className="flex items-center gap-3 border-b border-line-1 py-4 text-[13px] text-fg-3 hover:text-brand">
+                      <Icon aria-hidden="true" className="h-4 w-4" />
+                      <span className="flex-1">{label}</span>
+                      <span className="font-mono text-[10px] text-fg-5">{count}</span>
+                    </a>
+                  ))}
+                </nav>
+                <p className="mt-5 text-[12px] leading-5 text-fg-5">The docs contain setup steps, schema reference material, and end-to-end tutorials.</p>
+              </div>
+            </aside>
 
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-h3 text-fg-1 mb-4">General</h2>
-              <Accordion items={generalQuestions} />
-            </div>
-
-            <div>
-              <h2 className="text-h3 text-fg-1 mb-4">Technical</h2>
-              <Accordion items={technicalQuestions} />
-            </div>
-
-            <div>
-              <h2 className="text-h3 text-fg-1 mb-4">Pricing</h2>
-              <Accordion items={pricingQuestions} />
+            <div className="space-y-14">
+              <FaqGroup id="product" eyebrow="Product" title="Product and ownership" items={generalQuestions} />
+              <FaqGroup id="technical" eyebrow="Technical" title="Agents, generation, and services" items={technicalQuestions} />
+              <FaqGroup id="pricing" eyebrow="Commercial" title="Pricing and deployment" items={pricingQuestions} />
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section bg="gray">
-        <Container className="text-center max-w-[720px]">
-          <h2 className="text-h3 text-fg-1 mb-3">
-            Still have questions?
-          </h2>
-          <p className="text-fg-3 mb-6">
-            Reach out to the team or start building for free. CLI generation is free forever.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href={APP_URL} external>
-              Start Building Free
-            </Button>
-            <Button href="/contact" variant="outline">
-              Contact Us
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      <PageCta
+        eyebrow="Need a specific answer"
+        title="Bring us the backend decision you are working through"
+        description="Share your product, deployment boundary, or current stack and we will help you evaluate whether Apso fits."
+        primaryLabel="Contact the team"
+        primaryHref="/contact"
+      />
     </>
+  );
+}
+
+function FaqGroup({ id, eyebrow, title, items }: { id: string; eyebrow: string; title: string; items: typeof generalQuestions }) {
+  return (
+    <section id={id} className="scroll-mt-28">
+      <p className="font-mono text-[10px] uppercase text-brand">{eyebrow}</p>
+      <h2 className="mb-5 mt-2 font-display text-[27px] font-bold text-fg-1">{title}</h2>
+      <Accordion items={items} />
+    </section>
   );
 }

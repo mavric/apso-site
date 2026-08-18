@@ -1,98 +1,115 @@
-import Image from "next/image";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import { APP_URL, DOCS_URL } from "@/lib/constants";
 
-const HERO_FEATURES = [
-  "Ship a production API in minutes, not weeks",
-  "Same schema, same output, every run, on any model",
-  "TypeScript, Golang, and Python backends",
-  "Use an open-source generator and open-source backend stacks",
+const generatedFiles = [
+  "src/autogen/Project/Project.entity.ts",
+  "src/autogen/Project/Project.controller.ts",
+  "src/autogen/Task/Task.entity.ts",
+  "src/autogen/Task/Task.controller.ts",
+  "src/extensions/",
 ];
-
-function CheckIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="shrink-0">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M20.56 9.21L23 12L20.56 14.79L20.9 18.48L17.29 19.3L15.4 22.49L12 21.03L8.6 22.5L6.71 19.31L3.1 18.49L3.44 14.79L1 12L3.44 9.2L3.1 5.5L6.71 4.69L8.6 1.5L12 2.96L15.4 1.5L17.29 4.7L20.9 5.52L20.56 9.21ZM6.29 12.91L10.09 16.72L17.42 9.37L15.94 7.89L10.09 13.76L7.77 11.43L6.29 12.91Z"
-        fill="#01E67A"
-      />
-    </svg>
-  );
-}
 
 export function Hero() {
   return (
-    <section className="pt-16 pb-20 md:pt-24 md:pb-28 bg-bg-0">
+    <section className="overflow-hidden border-b border-line-1 bg-bg-0 pt-8 md:pt-10">
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left column */}
-          <div>
-            <h1 className="text-display text-fg-1 mb-5">
-              Your agent decides what to build. Apso decides how.
-            </h1>
-            <p className="text-lead text-fg-3 mb-8">
-              Turn a schema into a production-ready backend with REST API, auth, migrations,
-              and AWS deployment for TypeScript, Golang, and Python backends. Deterministic output every time,
-              on any model. The generator is open source, and you own every line.
-            </p>
+        <div className="mx-auto max-w-[920px] text-center">
+          <p className="mb-5 font-mono text-[12px] font-medium uppercase text-brand">
+            The backend foundation for AI-built software
+          </p>
+          <h1 className="text-display text-fg-1">Get the foundation right.</h1>
+          <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-7 text-fg-3 md:text-[18px]">
+            Apso turns your product model into a consistent, scalable backend. You own the generated code,
+            APIs, migrations, and infrastructure.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 min-[360px]:flex-row">
+            <Button href={APP_URL} external size="lg">
+              Start building
+            </Button>
+            <Button href={DOCS_URL} external variant="outline" size="lg">
+              Quickstart
+            </Button>
+          </div>
+          <div className="mt-6 hidden flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-fg-4 sm:flex">
+            <span>Apso expertise for your agent</span>
+            <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-line-1 sm:block" />
+            <span>Consistent APIs by design</span>
+            <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-line-1 sm:block" />
+            <span>Source code ownership</span>
+          </div>
+        </div>
 
-            <ul className="space-y-3 mb-8">
-              {HERO_FEATURES.map((feature) => (
-                <li key={feature} className="flex items-center gap-3 text-[15px] text-fg-2">
-                  <CheckIcon />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Button href={APP_URL} external size="lg">
-                Start Building Free
-              </Button>
-              <Button href={DOCS_URL} external variant="outline" size="lg">
-                Read the Docs
-              </Button>
+        <div className="mx-auto mt-8 max-w-[1120px] overflow-hidden rounded-sm border border-line-1 bg-navy shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
+          <div className="flex h-11 items-center justify-between border-b border-white/10 px-4 sm:px-5">
+            <div className="flex items-center gap-2" aria-hidden="true">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ffd166]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-accent" />
             </div>
-
-            {/* Trust signals */}
-            <div className="mt-8 flex items-center gap-4">
-              <Image
-                src="/images/avatar-group.png"
-                alt="Team avatars"
-                width={140}
-                height={44}
-                className="h-9 w-auto"
-              />
-              <p className="text-sm text-fg-4">
-                The generator is open source, templates are Apache-2.0 licensed, and the free tier stays free.
-              </p>
-            </div>
+            <span className="font-mono text-[11px] text-white/55">project-api / generated</span>
           </div>
 
-          <div className="relative">
-            {/* Dot pattern background */}
-            <div
-              className="absolute -top-8 -right-8 w-[calc(100%+64px)] h-[calc(100%+64px)] opacity-40 pointer-events-none"
-              style={{ backgroundImage: "url(/images/section-dot-bg.png)", backgroundSize: "24px 24px" }}
-              aria-hidden="true"
-            />
-            <Image
-              src="/images/banner-img.png"
-              alt="Apso platform interface showing schema editor and deployment dashboard"
-              width={960}
-              height={720}
-              className="relative w-full h-auto rounded-lg shadow-xl"
-              priority
-            />
-            {/* Floating accent bar */}
-            <div className="absolute -bottom-4 -left-4 h-2 w-24 rounded-full bg-accent" aria-hidden="true" />
+          <div className="grid min-h-0 md:min-h-[280px] md:grid-cols-[0.95fr_1.1fr_1fr]">
+            <div className="hidden border-b border-white/10 p-5 md:block md:border-b-0 md:border-r md:p-6">
+              <p className="font-mono text-[11px] uppercase text-accent">01 / Intent</p>
+              <p className="mt-4 font-display text-[22px] font-semibold leading-7 text-white">
+                A multi-tenant project workspace with members and tasks
+              </p>
+              <div className="mt-6 space-y-3 text-[13px] text-white/65">
+                <p className="flex items-center gap-2"><span className="text-accent">✓</span> Workspace-scoped data</p>
+                <p className="flex items-center gap-2"><span className="text-accent">✓</span> Member roles</p>
+                <p className="flex items-center gap-2"><span className="text-accent">✓</span> Project and task CRUD</p>
+                <p className="flex items-center gap-2"><span className="text-accent">✓</span> REST endpoints</p>
+              </div>
+            </div>
+
+            <div className="h-[210px] overflow-hidden border-b border-white/10 bg-[#071c3d] p-5 md:h-auto md:border-b-0 md:border-r md:p-6">
+              <div className="flex items-center justify-between gap-4">
+                <p className="font-mono text-[11px] uppercase text-[#8fb5ff]">02 / .apsorc</p>
+                <span className="font-mono text-[10px] text-white/35">source of truth</span>
+              </div>
+              <pre className="mt-4 overflow-hidden font-mono text-[12px] leading-5 text-white/80" aria-label="Example Apso schema">
+                <code>{`{
+  "version": 2,
+  "language": "typescript",
+  "entities": [
+    { "name": "Workspace" },
+    { "name": "Member" },
+    { "name": "Project" },
+    { "name": "Task" }
+  ]
+}`}</code>
+              </pre>
+            </div>
+
+            <div className="hidden p-5 md:block md:p-6">
+              <div className="flex items-center justify-between gap-4">
+                <p className="font-mono text-[11px] uppercase text-[#ffd166]">03 / Output</p>
+                <span className="rounded-sm border border-accent/30 bg-accent/10 px-2 py-1 font-mono text-[10px] text-accent">
+                  generated
+                </span>
+              </div>
+              <div className="mt-4 space-y-2.5">
+                {generatedFiles.map((file, index) => (
+                  <div key={file} className="flex min-w-0 items-center gap-2.5 font-mono text-[11px] text-white/65">
+                    <span className={index === generatedFiles.length - 1 ? "text-accent" : "text-[#8fb5ff]"}>
+                      {index === generatedFiles.length - 1 ? "+" : "↳"}
+                    </span>
+                    <span className="truncate">{file}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 border-t border-white/10 pt-4 font-mono text-[11px] leading-6 text-white/50">
+                <p><span className="text-accent">POST</span> /Projects</p>
+                <p><span className="text-[#8fb5ff]">GET</span> /Projects/:id</p>
+                <p><span className="text-[#ffd166]">PATCH</span> /Tasks/:id</p>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
+      <div className="h-8" />
     </section>
   );
 }
