@@ -34,8 +34,8 @@ Apso is a backend-as-a-service platform that generates production-ready REST API
 - Free: CLI generation free forever, 1 hosted service
 - Pro: ~$25/service/mo (always-on, backups, custom domain, 100 credits)
 - Team: ~$99/mo flat (unlimited members, RBAC, service catalog)
-- Enterprise: Custom (SSO, audit logs, SOC 2, SLA)
-- BYOC: ~$40/service/mo + your cloud costs
+- Enterprise: Custom, platform license plus DevOps retainer (SSO, audit logs, SOC 2, SLA; optional deployment into your own AWS, GCP, or Azure account)
+- Self-hosting: export the generated code and run it anywhere, free
 
 ## Company
 
