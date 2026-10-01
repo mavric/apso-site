@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Check, CloudCog, ExternalLink, ShieldCheck, Users } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { APP_URL } from "@/lib/constants";
@@ -39,7 +38,7 @@ const managedTiers = [
     price: "Custom",
     period: "",
     description: "Add governance, deployment controls, and rollout support for larger organizations.",
-    features: ["SSO and audit logs", "Dedicated infrastructure options", "Service agreements", "Rollout support", "Full code ownership"],
+    features: ["SSO and audit logs", "Dedicated infrastructure options", "Deploy to your own cloud (optional)", "Service agreements", "Rollout support", "Full code ownership"],
     cta: "Talk to sales",
     href: "/contact",
   },
@@ -60,32 +59,13 @@ const faqItems = [
   },
   {
     question: "Can we deploy into our own cloud account?",
-    answer: "Yes. Your Cloud keeps Apso generation and deployment automation while the infrastructure runs in your cloud account. You pay your cloud provider directly.",
+    answer: "Two ways. You can export the generated code and run it anywhere, free. Or, on Enterprise, Apso deploys to and maintains your AWS, GCP, or Azure account as a managed DevOps service. You pay your cloud provider directly.",
   },
 ];
 
 export function PricingPlans() {
-  const [mode, setMode] = useState<"managed" | "byoc">("managed");
-
   return (
     <>
-      <div className="mb-8 inline-flex rounded-sm border border-line-1 bg-bg-0 p-1" aria-label="Infrastructure model">
-        {(["managed", "byoc"] as const).map((value) => (
-          <button
-            key={value}
-            type="button"
-            aria-pressed={mode === value}
-            onClick={() => setMode(value)}
-            className={`rounded-sm px-4 py-2.5 text-[13px] font-semibold transition-colors ${
-              mode === value ? "bg-navy text-white" : "text-fg-4 hover:text-fg-1"
-            }`}
-          >
-            {value === "managed" ? "Managed by Apso" : "Your Cloud"}
-          </button>
-        ))}
-      </div>
-
-      {mode === "managed" ? (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {managedTiers.map((tier) => (
             <article
@@ -127,31 +107,30 @@ export function PricingPlans() {
             </article>
           ))}
         </div>
-      ) : (
-        <div className="grid overflow-hidden rounded-sm border border-line-1 bg-bg-0 lg:grid-cols-[0.82fr_1.18fr]">
+
+        <div className="mt-10 grid overflow-hidden rounded-sm border border-line-1 bg-bg-0 lg:grid-cols-[0.82fr_1.18fr]">
           <div className="bg-navy p-7 text-white md:p-10">
             <CloudCog aria-hidden="true" className="h-7 w-7 text-accent" />
-            <p className="mt-8 font-mono text-[10px] uppercase text-white/42">Your Cloud</p>
-            <p className="mt-3 font-display text-[42px] font-extrabold text-white">From $40</p>
-            <p className="mt-1 text-[13px] text-white/48">per service / month, plus cloud costs</p>
+            <p className="mt-8 font-mono text-[10px] uppercase text-white/42">Your Cloud · Enterprise option</p>
+            <p className="mt-3 font-display text-[42px] font-extrabold text-white">Custom</p>
+            <p className="mt-1 text-[13px] text-white/48">platform license plus DevOps retainer; you pay your cloud provider directly</p>
             <p className="mt-6 text-[14px] leading-6 text-white/65">
-              Apso maintains the generation and deployment workflow while the runtime, database, and credentials stay in your cloud account.
+              Apso deploys to and maintains your AWS, GCP, or Azure account as a managed DevOps service. The runtime, database, and credentials stay in your account.
             </p>
           </div>
           <div className="p-7 md:p-10">
             <h3 className="font-display text-[26px] font-bold text-fg-1">Control the account boundary</h3>
             <div className="mt-7 grid gap-6 sm:grid-cols-2">
               <CloudDetail icon={ShieldCheck} title="Your infrastructure" body="Use your cloud credits, network controls, credentials, and compliance settings." />
-              <CloudDetail icon={Users} title="Apso automation" body="Keep the repeatable build pipeline and receive workflow updates without handing over the account." />
+              <CloudDetail icon={Users} title="Managed DevOps" body="Apso sets up and maintains the deployment pipeline, regeneration, and updates inside your account." />
               <CloudDetail icon={CloudCog} title="No cloud markup" body="Pay your provider directly and see the infrastructure cost separately from Apso automation." />
               <CloudDetail icon={Check} title="Portable output" body="The backend code remains in your repository and can run without the Apso platform." />
             </div>
             <a href="/contact" className="mt-8 inline-flex min-h-11 items-center justify-center rounded-sm bg-brand px-5 font-display text-[13px] font-semibold text-white hover:bg-brand-hover">
-              Discuss Your Cloud
+              Talk to sales
             </a>
           </div>
         </div>
-      )}
 
       <div className="mt-16 grid gap-10 lg:grid-cols-[0.65fr_1fr]">
         <div>

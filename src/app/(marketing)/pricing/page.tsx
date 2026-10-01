@@ -9,7 +9,7 @@ import { PricingPlans } from "@/components/marketing/pricing-plans";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Generate backend code for free, then choose managed hosting, team controls, or deployment into your own cloud.",
+  description: "Generate backend code for free, then choose managed hosting, team controls, or Enterprise deployment into your own cloud.",
 };
 
 export default function PricingPage() {
@@ -35,14 +35,14 @@ export default function PricingPage() {
             </a>
           </>
         }
-        meta={["No per-seat charge", "Full code ownership", "Managed or your cloud"]}
+        meta={["No per-seat charge", "Full code ownership", "Your cloud on Enterprise"]}
         visual={
           <HeroLedger
             label="Cost boundary"
             rows={[
               { label: "Generate", value: "Start with the schema, APIs, migrations, and service code.", icon: Code2 },
               { label: "Operate", value: "Add managed compute, backups, domains, monitoring, and logs.", icon: ServerCog },
-              { label: "Choose your cloud", value: "Keep Apso automation while the infrastructure runs in your account.", icon: Cloud },
+              { label: "Choose your cloud", value: "On Enterprise, Apso deploys to and maintains your own cloud account.", icon: Cloud },
             ]}
             footer="the generated backend remains yours"
           />
