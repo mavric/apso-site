@@ -33,7 +33,7 @@ Apso is a backend-as-a-service platform that generates production-ready REST API
 
 Workspace plans (one per workspace, unlimited members on every plan):
 - Free: $0. Everyone can build and deploy, one free hosted service, no role management. CLI generation is free.
-- Team: $99/month flat. Roles and permissions, review and approvals, audit logs, service catalog.
+- Team: $99/month flat. Roles and permissions.
 - Business: talk to sales. Apso runs the DevOps for the whole workspace, in Apso's cloud or the customer's.
 - Enterprise: talk to sales. SSO, service agreements, rollout support.
 
