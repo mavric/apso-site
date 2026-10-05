@@ -12,7 +12,7 @@ import { submitContact, type ContactState } from "@/app/(marketing)/contact/acti
 const initialState: ContactState = { success: false };
 
 const routes = [
-  { icon: Building2, title: "Product and enterprise", body: "Architecture fit, team rollout, pricing, governance, and Your Cloud." },
+  { icon: Building2, title: "Product and enterprise", body: "Architecture fit, team rollout, pricing, governance, and running in your own cloud." },
   { icon: LifeBuoy, title: "Technical support", body: "Generation, deployment, language templates, services, and account issues." },
   { icon: Mail, title: "Partnerships", body: "Technology integrations, delivery partnerships, and shared customer work." },
 ];

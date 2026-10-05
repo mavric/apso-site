@@ -61,11 +61,11 @@ const technicalQuestions = [
 const pricingQuestions = [
   {
     question: "How much does Apso cost?",
-    answer: "The Free plan is $0. Pro managed services are $25 per service each month. Team is $99 per workspace each month with unlimited members. Your Cloud starts at $40 per service each month plus your cloud costs. Enterprise pricing is based on infrastructure and governance requirements.",
+    answer: "Pricing has two parts. The workspace plan is Free at $0, Team at $99 per month flat, or Business and Enterprise, which are priced with sales. Each deployed service has its own tier, bought separately on any plan: one Free service per workspace, then Small at $25, Medium at $49, or Large at $99 per service each month.",
   },
   {
     question: "Does Apso charge per seat?",
-    answer: "No. The Team plan includes unlimited members in the workspace. Managed production services are billed separately.",
+    answer: "No. Every workspace plan, including Free, includes unlimited members. Services are billed separately by tier.",
   },
   {
     question: "Is there vendor lock-in?",
@@ -73,7 +73,7 @@ const pricingQuestions = [
   },
   {
     question: "Can we deploy into our own cloud?",
-    answer: "Yes. Your Cloud keeps Apso generation and deployment automation while the infrastructure, credentials, and cloud bill stay in your account.",
+    answer: "Two ways. You can export the generated code and run it anywhere, free. Or, on Business, Apso runs the DevOps for your workspace inside your own cloud account. You pay your cloud provider directly.",
   },
 ];
 
