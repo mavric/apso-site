@@ -30,7 +30,7 @@ const workspacePlans: Tier[] = [
     price: "$99",
     period: "per month, flat",
     description: "Control who can do what once the team grows. No per-seat charge.",
-    features: ["Everything in Free", "Roles and permissions", "Review and approvals", "Audit logs", "Service catalog"],
+    features: ["Everything in Free", "Owner, Admin, Member and Billing roles", "Priority email support"],
     cta: "Start a team",
     href: APP_URL,
   },
