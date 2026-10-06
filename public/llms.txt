@@ -39,7 +39,7 @@ Workspace plans (one per workspace, unlimited members on every plan):
 
 Service tiers (bought per service, on any workspace plan):
 - Free: $0, one per workspace. Scale-to-zero compute, Apso subdomain, not for commercial use.
-- Small: $25/month. Always-on compute, backups, custom domain, monitoring.
+- Small: $25/month. Always-on compute, backups, monitoring.
 - Medium: $49/month. More resources.
 - Large: $99/month. Most resources.
 
