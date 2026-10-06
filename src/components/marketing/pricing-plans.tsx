@@ -69,7 +69,7 @@ const serviceTiers: Tier[] = [
     price: "$25",
     period: "per service / month",
     description: "Run a production service with the operational basics handled by Apso.",
-    features: ["Always-on compute", "Automated backups and restore", "Custom domain", "Monitoring and logs", "Commercial use"],
+    features: ["Always-on compute", "Automated backups and restore", "Monitoring and logs", "Commercial use"],
     cta: "Build a production service",
     href: APP_URL,
     badge: "Production default",
